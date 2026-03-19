@@ -1,0 +1,101 @@
+/* ===== EXPERTS / TEAM SECTION ===== */
+.experts-section {
+  background: var(--white);
+  border-top: 1px solid var(--gray-200);
+}
+
+.experts-header {
+  display: flex; justify-content: space-between;
+  align-items: flex-end; margin-bottom: 50px;
+  flex-wrap: wrap; gap: 22px;
+}
+
+.experts-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+}
+
+/* ---- Expert Card ---- */
+.expert-card {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius);
+  overflow: hidden; background: var(--white);
+  transition: all 0.4s var(--ease);
+  position: relative;
+}
+
+.expert-card:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-5px);
+  border-color: transparent;
+}
+
+/* Photo area */
+.expert-photo {
+  width: 100%; aspect-ratio: 1 / 1.1;
+  background: var(--gray-100);
+  position: relative; overflow: hidden;
+}
+
+.expert-photo img {
+  width: 100%; height: 100%;
+  object-fit: cover; display: block;
+  transition: transform 0.5s var(--ease);
+}
+.expert-card:hover .expert-photo img { transform: scale(1.04); }
+
+/* Placeholder shown before real photo is added */
+.expert-placeholder {
+  width: 100%; height: 100%;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px;
+  background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+}
+.expert-avatar-ring {
+  width: 78px; height: 78px;
+  background: rgba(255,255,255,0.08);
+  border: 2px solid rgba(244,100,10,0.45);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 30px;
+}
+.expert-placeholder span {
+  font-size: 11px; color: rgba(255,255,255,0.35);
+  letter-spacing: 0.12em; text-transform: uppercase;
+}
+
+/* Orange accent strip */
+.expert-accent {
+  position: absolute; top: 0; right: 0;
+  width: 4px; height: 100%; background: var(--orange);
+}
+
+/* Info block */
+.expert-info { padding: 22px 26px; border-top: 1px solid var(--gray-100); }
+
+.expert-name {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: 17.5px; color: var(--navy); margin-bottom: 3px;
+}
+.expert-role {
+  font-size: 11px; letter-spacing: 0.10em;
+  text-transform: uppercase; color: var(--orange);
+  font-weight: 700; margin-bottom: 11px;
+}
+.expert-bio {
+  font-size: 13px; color: var(--text-light);
+  line-height: 1.65; font-weight: 300; margin-bottom: 16px;
+}
+
+/* Social links */
+.expert-socials { display: flex; gap: 9px; }
+
+.expert-social-btn {
+  width: 33px; height: 33px;
+  border: 1px solid var(--gray-200); border-radius: var(--radius-sm);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gray-600); font-size: 13px;
+  transition: all var(--t-base); background: var(--white);
+}
+.expert-social-btn:hover { background: var(--navy); border-color: var(--navy); color: var(--white); }
+.expert-social-btn.linkedin:hover { background: #0077b5; border-color: #0077b5; }

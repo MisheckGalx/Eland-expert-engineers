@@ -1,0 +1,55 @@
+/* ===== RESPONSIVE ===== */
+
+/* Tablet */
+@media (max-width: 1100px) {
+  .services-grid          { grid-template-columns: repeat(2, 1fr); }
+  .industries-grid        { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid          { grid-template-columns: repeat(2, 1fr); }
+  .experts-grid           { grid-template-columns: repeat(2, 1fr); }
+  .footer-top             { grid-template-columns: 1fr 1fr; gap: 36px; }
+  .service-detail-row     { grid-template-columns: 1fr; gap: 18px; }
+  .service-detail-value   { border-left: none; padding-left: 0; border-top: 1px solid var(--gray-200); padding-top: 18px; }
+  .compliance-panel       { grid-template-columns: 1fr; }
+  .compliance-block:first-child { border-right: none; border-bottom: 1px solid var(--gray-200); }
+  .values-layout          { grid-template-columns: 1fr; gap: 48px; }
+  .values-props           { grid-template-columns: 1fr 1fr; }
+  .about-layout           { grid-template-columns: 1fr; gap: 48px; }
+  .careers-layout         { grid-template-columns: 1fr; gap: 48px; }
+  .contact-layout         { grid-template-columns: 1fr; gap: 48px; }
+  .slide-card             { width: 340px; }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-links, .social-nav   { display: none; }
+  .menu-toggle              { display: flex; }
+
+  section                   { padding: var(--section-pad-sm); }
+
+  .services-grid            { grid-template-columns: 1fr; }
+  .industries-grid          { grid-template-columns: 1fr; }
+  .projects-grid            { grid-template-columns: 1fr; }
+  .experts-grid             { grid-template-columns: 1fr; }
+  .values-props             { grid-template-columns: 1fr; }
+  .footer-top               { grid-template-columns: 1fr; gap: 30px; }
+  .services-header          { flex-direction: column; align-items: flex-start; }
+  .experts-header           { flex-direction: column; align-items: flex-start; }
+
+  .hero h1 .indent          { padding-left: 0; }
+  .hero-scroll              { display: none; }
+  .trust-strip              { gap: 18px; }
+  .trust-div                { display: none; }
+
+  .slide-card               { width: calc(88vw); }
+
+  .form-row                 { grid-template-columns: 1fr; }
+
+  .cta-banner h2            { font-size: clamp(36px, 10vw, 60px); }
+}
+
+/* Small mobile */
+@media (max-width: 480px) {
+  .hero h1                  { font-size: clamp(48px, 12vw, 72px); }
+  .about-badge              { bottom: -12px; right: -8px; }
+  .contact-social-row       { flex-direction: column; }
+}

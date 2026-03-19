@@ -1,0 +1,48 @@
+/* ===== DESIGN TOKENS ===== */
+:root {
+  /* Brand Colors */
+  --navy:         #0b1f3a;
+  --navy-mid:     #0f2a4e;
+  --navy-light:   #1a3d6e;
+  --orange:       #f4640a;
+  --orange-hover: #ff7d2a;
+  --black:        #080d16;
+
+  /* Neutral Palette */
+  --white:        #ffffff;
+  --off-white:    #f7f8fa;
+  --gray-100:     #f0f2f6;
+  --gray-200:     #e2e6ed;
+  --gray-300:     #c8d0de;
+  --gray-400:     #8a99b3;
+  --gray-600:     #4a5a75;
+
+  /* Text */
+  --text-dark:    #111827;
+  --text-mid:     #374151;
+  --text-light:   #6b7280;
+
+  /* Glass / transparency */
+  --glass:        rgba(255,255,255,0.05);
+  --glass-border: rgba(255,255,255,0.10);
+
+  /* Spacing */
+  --section-pad:  100px 5%;
+  --section-pad-sm: 64px 5%;
+
+  /* Radius */
+  --radius:       3px;
+  --radius-sm:    2px;
+
+  /* Shadows */
+  --shadow-sm:    0 4px 16px rgba(11,31,58,0.06);
+  --shadow-md:    0 12px 40px rgba(11,31,58,0.10);
+  --shadow-lg:    0 24px 64px rgba(11,31,58,0.14);
+  --shadow-orange: 0 12px 40px rgba(244,100,10,0.40);
+
+  /* Transitions */
+  --ease:         cubic-bezier(0.16, 1, 0.3, 1);
+  --t-fast:       0.2s;
+  --t-base:       0.35s;
+  --t-slow:       0.6s;
+}

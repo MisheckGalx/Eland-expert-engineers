@@ -1,0 +1,18 @@
+# Dependencies
+node_modules/
+
+# Environment — NEVER commit this
+.env
+
+# Database (local only)
+server/db/*.db
+server/db/*.db-shm
+server/db/*.db-wal
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/settings.json
+*.swp

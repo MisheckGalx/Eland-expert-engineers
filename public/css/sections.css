@@ -529,3 +529,10 @@ section { padding: var(--section-pad); }
   transform: translateY(-1px);
 }
 .form-note { color: var(--text-light); font-size: 12px; margin-top: 12px; text-align: center; font-weight: 300; }
+
+.page-section { display: none !important; }
+.page-section.active { display: block !important; opacity: 1 !important; transform: none !important; }
+
+/* FORCE NAV FIX */
+.page-section { display: none !important; }
+.page-section.active { display: block !important; opacity: 1 !important; transform: none !important; pointer-events: all !important; }

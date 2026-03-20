@@ -411,3 +411,18 @@
   background: var(--orange);
   box-shadow: var(--shadow-orange);
 }
+
+/* COOKIE BANNER FIX */
+#cookieBanner {
+  z-index: 8000 !important;
+  position: fixed !important;
+  bottom: 0 !important;
+  pointer-events: all !important;
+}
+#cookieBanner .cookie-btn-accept,
+#cookieBanner .cookie-btn-decline {
+  cursor: pointer !important;
+  pointer-events: all !important;
+  position: relative !important;
+  z-index: 8001 !important;
+}

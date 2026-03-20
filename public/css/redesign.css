@@ -1,0 +1,416 @@
+/* =====================================================
+   ELAND REDESIGN — Clean white/blue/orange theme
+   Fixes: cards, colours, typography, spacing
+   ===================================================== */
+
+/* ── GLOBAL RESET ── */
+* { box-sizing: border-box; }
+
+body {
+  background: #f7f8fa !important;
+  color: #111827 !important;
+  font-family: 'DM Sans', sans-serif !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+}
+
+/* ── TYPOGRAPHY ── */
+h1, h2, h3, h4 {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  line-height: 1.15 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.section-title { color: #0b1f3a !important; }
+.section-label {
+  font-size: 11px !important;
+  letter-spacing: 0.25em !important;
+  font-weight: 700 !important;
+  color: #f4640a !important;
+}
+.section-sub {
+  font-size: 15px !important;
+  color: #6b7280 !important;
+  font-weight: 300 !important;
+  line-height: 1.8 !important;
+  max-width: 580px !important;
+}
+
+/* ── SECTIONS — white background, generous padding ── */
+section {
+  padding: 96px 6% !important;
+  background: #ffffff !important;
+}
+
+.services-section  { background: #ffffff !important; }
+.industries-section { background: #f7f8fa !important; }
+.experts-section   { background: #ffffff !important; }
+.values-section    { background: #0b1f3a !important; }
+.gallery-section   { background: #f7f8fa !important; }
+.testimonials-section { background: #0b1f3a !important; }
+.about-section     { background: #ffffff !important; padding-top: 140px !important; }
+.careers-section   { background: #ffffff !important; padding-top: 140px !important; }
+.contact-section   { background: #f7f8fa !important; padding-top: 140px !important; }
+.services-detail-section { background: #ffffff !important; padding-top: 140px !important; }
+.projects-section  { background: #f7f8fa !important; padding-top: 140px !important; }
+
+/* ── SERVICES GRID — separated cards ── */
+.services-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.service-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  padding: 36px 28px !important;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.05) !important;
+  gap: 0 !important;
+}
+
+.service-card:hover {
+  border-color: #f4640a !important;
+  box-shadow: 0 12px 40px rgba(11,31,58,0.12) !important;
+  transform: translateY(-4px) !important;
+}
+
+.service-card::before {
+  border-radius: 12px 0 0 12px !important;
+}
+
+.service-num {
+  color: #d1d5db !important;
+  font-size: 11px !important;
+  letter-spacing: 0.2em !important;
+}
+
+.service-title {
+  font-size: 17px !important;
+  color: #0b1f3a !important;
+  margin-bottom: 10px !important;
+}
+
+.service-desc {
+  font-size: 14px !important;
+  color: #6b7280 !important;
+  line-height: 1.75 !important;
+}
+
+/* ── INDUSTRY CARDS — separated ── */
+.industries-grid {
+  gap: 20px !important;
+}
+
+.industry-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  padding: 40px 32px !important;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.industry-card:hover {
+  border-color: transparent !important;
+  box-shadow: 0 16px 48px rgba(11,31,58,0.13) !important;
+  transform: translateY(-5px) !important;
+}
+
+.industry-title {
+  font-size: 21px !important;
+  color: #0b1f3a !important;
+  font-weight: 800 !important;
+}
+
+.industry-desc {
+  color: #6b7280 !important;
+  font-size: 14px !important;
+  line-height: 1.78 !important;
+}
+
+/* ── VALUE PROPS — separated ── */
+.values-props {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  background: transparent !important;
+}
+
+.value-prop {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1.5px solid rgba(255,255,255,0.1) !important;
+  border-radius: 12px !important;
+  padding: 28px !important;
+  transition: background 0.3s !important;
+}
+
+.value-prop:hover {
+  background: rgba(255,255,255,0.1) !important;
+  border-color: rgba(244,100,10,0.35) !important;
+}
+
+.value-prop h4 { color: #ffffff !important; font-size: 15px !important; }
+.value-prop p  { color: rgba(255,255,255,0.65) !important; font-size: 13.5px !important; }
+
+/* ── EXPERT CARDS — separated ── */
+.experts-grid {
+  gap: 24px !important;
+}
+
+.expert-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 14px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 10px rgba(11,31,58,0.05) !important;
+  transition: all 0.35s ease !important;
+}
+
+.expert-card:hover {
+  border-color: transparent !important;
+  box-shadow: 0 20px 56px rgba(11,31,58,0.13) !important;
+  transform: translateY(-5px) !important;
+}
+
+.expert-name  { font-size: 18px !important; color: #0b1f3a !important; }
+.expert-role  { color: #f4640a !important; font-size: 11px !important; letter-spacing: 0.1em !important; }
+.expert-bio   { color: #6b7280 !important; font-size: 13px !important; }
+
+/* ── TESTIMONIAL CARDS — separated ── */
+.testimonials-grid {
+  gap: 20px !important;
+}
+
+.testimonial-card {
+  background: rgba(255,255,255,0.07) !important;
+  border: 1.5px solid rgba(255,255,255,0.1) !important;
+  border-radius: 14px !important;
+  padding: 32px 28px !important;
+  transition: all 0.3s !important;
+}
+
+.testimonial-card:hover {
+  border-color: rgba(244,100,10,0.3) !important;
+  background: rgba(255,255,255,0.1) !important;
+  transform: translateY(-4px) !important;
+}
+
+.testimonial-content { color: rgba(255,255,255,0.8) !important; font-size: 14.5px !important; }
+.testimonial-name    { color: #ffffff !important; font-size: 14px !important; }
+.testimonial-role    { color: rgba(255,255,255,0.5) !important; font-size: 12px !important; }
+
+/* ── PROJECT CARDS — separated ── */
+.projects-grid {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 20px !important;
+  background: transparent !important;
+  border: none !important;
+  margin-top: 48px !important;
+}
+
+.project-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  padding: 32px 28px !important;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.05) !important;
+  transition: all 0.3s ease !important;
+}
+
+.project-card:hover {
+  border-color: transparent !important;
+  box-shadow: 0 16px 48px rgba(11,31,58,0.12) !important;
+  transform: translateY(-4px) !important;
+}
+
+.project-industry { color: #f4640a !important; }
+.project-title    { color: #0b1f3a !important; font-size: 17px !important; }
+.project-desc     { color: #6b7280 !important; font-size: 13.5px !important; }
+.project-metric .value { color: #0b1f3a !important; font-size: 42px !important; }
+.project-metric .desc  { color: #9ca3af !important; }
+
+/* ── SERVICES DETAIL — separated rows ── */
+.services-detail-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 16px !important;
+  background: transparent !important;
+  border: none !important;
+}
+
+.service-detail-row {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  padding: 40px 40px !important;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.04) !important;
+  transition: all 0.3s !important;
+}
+
+.service-detail-row:hover {
+  border-color: #f4640a !important;
+  box-shadow: 0 8px 32px rgba(11,31,58,0.10) !important;
+}
+
+.service-detail-title { color: #0b1f3a !important; font-size: 20px !important; }
+.service-detail-desc  { color: #6b7280 !important; }
+.service-detail-value { border-left-color: #e2e6ed !important; }
+.service-detail-value h5 { color: #f4640a !important; }
+.service-detail-value p  { color: #6b7280 !important; }
+
+/* ── TAGS ── */
+.tag {
+  background: #f0f2f6 !important;
+  border-color: #e2e6ed !important;
+  color: #374151 !important;
+  border-radius: 6px !important;
+  font-size: 11px !important;
+}
+
+/* ── TRUST STRIP ── */
+.trust-strip {
+  background: #0b1f3a !important;
+  padding: 24px 6% !important;
+  gap: 40px !important;
+}
+
+/* ── GALLERY ── */
+.gallery-grid {
+  gap: 16px !important;
+}
+
+.gallery-card {
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  box-shadow: 0 2px 8px rgba(11,31,58,0.05) !important;
+}
+
+.gallery-card:hover {
+  border-color: transparent !important;
+  box-shadow: 0 12px 40px rgba(11,31,58,0.14) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── CONTACT FORM ── */
+.form-group input,
+.form-group select,
+.form-group textarea {
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 8px !important;
+  background: #ffffff !important;
+  font-size: 14px !important;
+  padding: 13px 16px !important;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: #0b1f3a !important;
+  box-shadow: 0 0 0 3px rgba(11,31,58,0.08) !important;
+  outline: none !important;
+}
+
+.form-submit {
+  border-radius: 8px !important;
+  font-size: 14px !important;
+  padding: 16px !important;
+  letter-spacing: 0.1em !important;
+}
+
+/* ── COMPLIANCE ── */
+.compliance-panel { background: #f7f8fa !important; }
+.compliance-block { background: transparent !important; }
+.compliance-item {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 8px !important;
+  transition: border-color 0.3s !important;
+}
+.compliance-item:hover { border-color: #f4640a !important; }
+
+/* ── ABOUT HIGHLIGHTS ── */
+.highlight {
+  background: #f7f8fa !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 8px !important;
+}
+.highlight:hover { border-color: #f4640a !important; }
+
+/* ── CAREERS ── */
+.culture-point {
+  background: #f7f8fa !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 10px !important;
+}
+.culture-point:hover { border-color: #f4640a !important; }
+.culture-point h4 { color: #0b1f3a !important; }
+
+.role-card {
+  background: #f7f8fa !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 8px !important;
+}
+.role-card:hover { border-color: #f4640a !important; background: #ffffff !important; }
+.role-title { color: #0b1f3a !important; }
+
+/* ── CTA BANNER ── */
+.cta-banner { background: #0b1f3a !important; padding: 88px 6% !important; }
+.cta-banner h2 { color: #ffffff !important; font-size: clamp(42px,6vw,80px) !important; }
+.cta-banner p  { color: rgba(255,255,255,0.6) !important; }
+
+/* ── FOOTER ── */
+#site-footer { background: #080d16 !important; }
+.footer-brand-desc { color: rgba(255,255,255,0.4) !important; }
+
+/* ── BUTTONS ── */
+.btn-primary {
+  border-radius: 8px !important;
+  font-size: 13px !important;
+  padding: 14px 32px !important;
+  letter-spacing: 0.08em !important;
+}
+
+.btn-dark {
+  border-radius: 8px !important;
+}
+
+/* ── CONTACT DETAILS ── */
+.contact-detail-icon {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 8px !important;
+}
+
+/* ── MAP ── */
+.map-wrap, .map-embed-wrap {
+  border: 1.5px solid #e2e6ed !important;
+  border-radius: 12px !important;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 5px !important; }
+::-webkit-scrollbar-track { background: #f7f8fa !important; }
+::-webkit-scrollbar-thumb { background: #f4640a !important; border-radius: 3px !important; }
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  section { padding: 64px 5% !important; }
+  .services-grid  { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .projects-grid  { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .industries-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .values-props   { grid-template-columns: 1fr !important; gap: 14px !important; }
+  .testimonials-grid { grid-template-columns: 1fr !important; gap: 14px !important; }
+}
+
+@media (max-width: 1100px) {
+  .services-grid  { grid-template-columns: repeat(2,1fr) !important; }
+  .projects-grid  { grid-template-columns: repeat(2,1fr) !important; }
+}

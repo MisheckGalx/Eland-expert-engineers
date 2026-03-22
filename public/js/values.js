@@ -20,39 +20,14 @@
           </div>
         </div>
         <div class="values-props reveal">
-          <div class="value-prop"><span class="value-prop-icon">🔗</span><h4>Integrated Solutions</h4><p>End-to-end E&amp;I delivery — design, procurement, installation, commissioning under one roof.</p></div>
-          <div class="value-prop"><span class="value-prop-icon">💰</span><h4>Cost Efficiency</h4><p>Single-source accountability eliminates coordination risk and drives measurable savings.</p></div>
-          <div class="value-prop"><span class="value-prop-icon">🏆</span><h4>Proven Reliability</h4><p>200+ projects delivered across power, water, and mining with zero quality compromise.</p></div>
-          <div class="value-prop"><span class="value-prop-icon">🧠</span><h4>Technical Expertise</h4><p>Multidisciplinary engineers with deep knowledge across complex E&amp;I systems.</p></div>
+          <div class="value-prop"><h4>Integrated Solutions</h4><p>End-to-end E&amp;I delivery — design, procurement, installation, commissioning under one roof.</p></div>
+          <div class="value-prop"><h4>Cost Efficiency</h4><p>Single-source accountability eliminates coordination risk and drives measurable savings.</p></div>
+          <div class="value-prop"><h4>Proven Reliability</h4><p>200+ projects delivered across power, water, and mining with zero quality compromise.</p></div>
+          <div class="value-prop"><h4>Technical Expertise</h4><p>Multidisciplinary engineers with deep knowledge across complex E&amp;I systems.</p></div>
         </div>
       </div>
     </section>`;
 })();
-
-
-/* ===== INDUSTRIES SECTION ===== */
-(function buildIndustries() {
-  const mount = document.getElementById('industries-mount');
-  if (!mount) return;
-  const industries = [
-    { emoji:'⚡', title:'Power Generation',     desc:'From coal and gas to renewables — instrumentation and control systems that keep power flowing reliably at scale.' },
-    { emoji:'💧', title:'Water &amp; Wastewater', desc:'Water analytics, SCADA integration, and treatment monitoring for municipalities and industrial water management.' },
-    { emoji:'⛏️', title:'Mining &amp; Heavy Industry', desc:'Robust E&amp;I systems designed for extreme conditions in mining, minerals processing, and heavy industrial environments.' },
-  ];
-  const cards = industries.map((ind, i) => `
-    <div class="industry-card reveal${i>0?' reveal-delay-'+i:''}">
-      <span class="industry-emoji">${ind.emoji}</span>
-      <div class="industry-title">${ind.title}</div>
-      <p class="industry-desc">${ind.desc}</p>
-    </div>`).join('');
-  mount.innerHTML = `
-    <section class="industries-section">
-      <div class="section-label reveal">Industries Served</div>
-      <h2 class="section-title reveal reveal-delay-1">Where We Operate</h2>
-      <div class="industries-grid">${cards}</div>
-    </section>`;
-})();
-
 
 /* ===== HOME CTA ===== */
 (function buildHomeCta() {

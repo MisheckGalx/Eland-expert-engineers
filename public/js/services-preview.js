@@ -3,23 +3,28 @@
   if (!mount) return;
 
   const services = [
-    { num:'01', title:'Water Analysis Engineering',       desc:'Water quality instrumentation and treatment process monitoring for municipal and industrial applications.' },
-    { num:'02', title:'Power Plant Instrumentation',      desc:'Precision measurement and control systems for power generation facilities operating at maximum efficiency.' },
-    { num:'03', title:'Industrial Automation &amp; E&amp;I', desc:'Full-scope electrical and instrumentation installation with integrated automation for industrial environments.' },
+    { num:'01', img:'images/services/service-water.jpg',      title:'Water Analysis Engineering',       desc:'Water quality instrumentation and treatment process monitoring for municipal and industrial applications.' },
+    { num:'02', img:'images/services/service-power.jpg',       title:'Power Plant Instrumentation',      desc:'Precision measurement and control systems for power generation facilities operating at maximum efficiency.' },
+    { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'Full-scope electrical and instrumentation installation with integrated automation for industrial environments.' },
   ];
 
   const products = [
-    { num:'01', title:'Online Water Quality Analysers',       desc:'Multi-parameter analysers for pH, turbidity, dissolved oxygen and conductivity for continuous monitoring.' },
-    { num:'02', title:'PLC &amp; MCC Systems',                desc:'Programmable logic controllers and motor control centres — supplied, configured and commissioned to specification.' },
-    { num:'03', title:'Field Instruments &amp; Transmitters', desc:'Pressure transmitters, level sensors, control valves and cable systems from world-class manufacturers.' },
+    { num:'01', img:'images/services/service-water.jpg',        title:'Online Water Quality Analysers',       desc:'Multi-parameter analysers for pH, turbidity, dissolved oxygen and conductivity for continuous monitoring.' },
+    { num:'02', img:'images/services/service-automation.jpg',   title:'PLC &amp; MCC Systems',                desc:'Programmable logic controllers and motor control centres — supplied, configured and commissioned to specification.' },
+    { num:'03', img:'images/services/service-distribution.jpg', title:'Field Instruments &amp; Transmitters',  desc:'Pressure transmitters, level sensors, control valves and cable systems from world-class manufacturers.' },
   ];
 
   const makeCards = (items, page, arrow) => items.map((s,i) => `
-    <div class="industry-card reveal${i>0?' reveal-delay-'+i:''}" onclick="showPage('${page}')" style="cursor:pointer;">
-      <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:0.22em;color:var(--gray-400);margin-bottom:12px;">${s.num}</div>
-      <div class="industry-title" style="font-size:17px;">${s.title}</div>
-      <p class="industry-desc">${s.desc}</p>
-      <div style="margin-top:16px;font-size:13px;font-weight:600;color:var(--orange);">${arrow} &rarr;</div>
+    <div class="industry-card reveal${i>0?' reveal-delay-'+i:''}" onclick="showPage('${page}')" style="cursor:pointer;padding:0;overflow:hidden;">
+      <div style="width:100%;height:180px;overflow:hidden;">
+        <img src="${s.img}" alt="${s.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;"/>
+      </div>
+      <div style="padding:24px;">
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:0.22em;color:var(--gray-400);margin-bottom:8px;">${s.num}</div>
+        <div class="industry-title" style="font-size:17px;">${s.title}</div>
+        <p class="industry-desc" style="margin-top:8px;">${s.desc}</p>
+        <div style="margin-top:14px;font-size:13px;font-weight:600;color:var(--orange);">${arrow} &rarr;</div>
+      </div>
     </div>`).join('');
 
   mount.innerHTML = `

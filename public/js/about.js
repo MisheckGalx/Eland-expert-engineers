@@ -16,7 +16,7 @@
         <!-- Visual block -->
         <div class="about-visual reveal">
           <div class="about-visual-main">
-            <div class="about-bg"></div>
+            <div class="about-bg" style="background-image:url('images/about-main.jpg');background-size:cover;background-position:center;position:absolute;inset:0;border-radius:inherit;"></div>
             <div class="about-bg-text">EEE</div>
             <div style="position:absolute;bottom:22px;left:22px;z-index:2;">
               <div style="font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;

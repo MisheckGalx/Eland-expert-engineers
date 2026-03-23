@@ -8,43 +8,37 @@
       num: '01', img: 'images/services/service-water.jpg',
       title: 'Water Analysis Engineering',
       desc: 'Advanced analytical instrumentation, water quality monitoring systems, and treatment process control for municipal water authorities and industrial water management operations.',
-      tags: ['Online Analyzers','SCADA Integration','Dosing Systems','pH &amp; Turbidity','Flow Metering'],
-      value: 'Real-time water quality assurance, regulatory compliance automation, and operational efficiency gains through intelligent analytics infrastructure.',
+      tags: ['Online Analyzers','SCADA Integration','Dosing Systems','pH &amp; Turbidity','Flow Metering']
     },
     {
       num: '02', img: 'images/services/service-power.jpg',
       title: 'Power Plant Instrumentation',
       desc: 'Precision measurement and control systems for power generation facilities — from conventional thermal plants to modern renewable energy installations.',
-      tags: ['Temperature Measurement','Pressure Systems','Level Control','Flame Detection','DCS Integration'],
-      value: 'Maximised plant availability, early fault detection, optimised fuel efficiency, and reduced unplanned maintenance through precision instrumentation.',
+      tags: ['Temperature Measurement','Pressure Systems','Level Control','Flame Detection','DCS Integration']
     },
     {
       num: '03', img: 'images/services/service-automation.jpg',
       title: 'Industrial Automation &amp; E&amp;I Installation',
       desc: 'Full-scope electrical and instrumentation installation services integrated with automation systems for industrial facilities.',
-      tags: ['PLC Programming','MCC Installation','Cable Management','Commissioning','Loop Testing'],
-      value: 'Reduced project risk, accelerated commissioning timelines, and seamless integration between automation systems and plant electrical infrastructure.',
+      tags: ['PLC Programming','MCC Installation','Cable Management','Commissioning','Loop Testing']
     },
     {
       num: '04', img: 'images/services/service-obsolete.jpg',
       title: 'Obsolete Instrumentation Support',
       desc: 'Specialist lifecycle management for legacy instrumentation and control systems no longer supported by original manufacturers.',
-      tags: ['Lifecycle Assessment','Parts Sourcing','System Retrofit','Migration Planning','Documentation'],
-      value: 'Extended asset lifespan, eliminated single-point-of-failure risk, and clear technology migration pathways without disruptive full-system replacement.',
+      tags: ['Lifecycle Assessment','Parts Sourcing','System Retrofit','Migration Planning','Documentation']
     },
     {
       num: '05', img: 'images/services/service-distribution.jpg',
       title: 'Electrical &amp; Instrumentation Distribution',
       desc: 'Reliable supply and distribution of electrical and instrumentation equipment from world-class manufacturers.',
-      tags: ['Field Instruments','Control Valves','Transmitters','Cable &amp; Conduit','Switchgear'],
-      value: 'Simplified procurement, reduced lead times, quality-assured equipment, and competitive pricing through established distributor partnerships.',
+      tags: ['Field Instruments','Control Valves','Transmitters','Cable &amp; Conduit','Switchgear']
     },
     {
       num: '06', img: 'images/services/service-labour.jpg',
       title: 'Skilled Engineering Labour',
       desc: 'Flexible deployment of qualified E&amp;I engineers, technicians, and artisans for short and long-term project requirements.',
-      tags: ['E&amp;I Technicians','Instrument Mechanics','Project Engineers','Site Supervisors','Commissioning Eng.'],
-      value: 'Immediate access to skilled personnel, zero HR overhead, full compliance management, and flexible scaling to match project demand.',
+      tags: ['E&amp;I Technicians','Instrument Mechanics','Project Engineers','Site Supervisors','Commissioning Eng.']
     },
   ];
 
@@ -60,10 +54,6 @@
         <div class="service-detail-tags">
           ${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
-      </div>
-      <div class="service-detail-value">
-        <h5>Value Delivered</h5>
-        <p>${s.value}</p>
       </div>
     </div>`).join('');
 

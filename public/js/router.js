@@ -11,9 +11,10 @@ function showPage(page) {
   var nav = document.getElementById('navbar');
   if (nav) { page==='home' ? nav.classList.remove('page-light') : nav.classList.add('page-light'); }
 }
-function toggleMobile() { document.getElementById('mobileNav').classList.toggle('open'); }
-
-// Auto-close mobile nav when any link inside it is tapped
+function toggleMobile() {
+  var mob = document.getElementById('mobileNav');
+  if (mob) mob.classList.toggle('open');
+}
 document.addEventListener('DOMContentLoaded', function() {
   document.querySelectorAll('.mobile-nav a').forEach(function(link) {
     link.addEventListener('click', function() {
@@ -22,7 +23,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 });
-window.addEventListener('scroll',function(){
-  var nav=document.getElementById('navbar');
-  if(nav) nav.classList.toggle('scrolled',window.scrollY>60);
+window.addEventListener('scroll', function() {
+  var nav = document.getElementById('navbar');
+  if (nav) nav.classList.toggle('scrolled', window.scrollY>60);
 });

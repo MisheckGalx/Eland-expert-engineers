@@ -16,3 +16,23 @@
 .service-card:hover .service-img-wrap img {
   transform: scale(1.05);
 }
+
+/* ── SERVICE DETAIL ROW IMAGES ── */
+.service-detail-img-wrap {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  overflow: hidden;
+  border-radius: var(--radius);
+  flex-shrink: 0;
+}
+.service-detail-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.service-detail-img-wrap .service-detail-num {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+}

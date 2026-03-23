@@ -77,13 +77,23 @@
             </a>
           </div>
 
-          <!-- Map placeholder -->
-          <div class="map-wrap">
-            <div class="map-pin">
-              <span class="pin-icon">📍</span>
-              <p>Fontainebleau, Randburg</p>
-              <p class="pin-sub">South Africa, 2194</p>
-            </div>
+          <!-- Google Map -->
+          <div style="margin-top:28px;border-radius:12px;overflow:hidden;height:260px;">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.5!2d27.9968!3d-26.1012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573c8b9b9b9b9%3A0x1234!2s45+Annie+Rd%2C+Fontainebleau%2C+Randburg!5e0!3m2!1sen!2sza!4v1700000000000"
+              width="100%" height="260" style="border:0;display:block;"
+              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+          <div style="margin-top:10px;padding:12px 14px;background:#f8f8f8;border-radius:10px;border:1px solid #e8e8ee;">
+            <p style="font-size:13px;color:#888;margin:0;">
+              <strong style="color:#1a1a2e;">Eland Expert Engineers (Pty) Ltd</strong><br>
+              45 Annie Road, Fontainebleau, Randburg, 2194<br>
+              <a href="https://maps.google.com/?q=45+Annie+Road+Fontainebleau+Randburg+South+Africa"
+                 target="_blank" style="color:#f4640a;font-weight:600;text-decoration:none;">
+                Open in Google Maps &rarr;
+              </a>
+            </p>
           </div>
         </div>
 

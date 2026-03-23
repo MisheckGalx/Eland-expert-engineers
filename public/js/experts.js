@@ -11,7 +11,7 @@
 
 const EXPERTS = [
   {
-    photo:    '',   // ← e.g. 'images/experts/johan.jpg'
+    photo: 'images/experts/expert-1.jpg',
     name:     'Johan van der Merwe',
     role:     'Managing Director &amp; Lead Engineer',
     bio:      '20+ years in electrical and instrumentation engineering across power generation, mining, and water treatment. Specialist in complex control system design and project delivery.',
@@ -19,7 +19,7 @@ const EXPERTS = [
     email:    'admin1@eeesa.co.za',
   },
   {
-    photo:    '',
+    photo: 'images/experts/expert-2.jpg',
     name:     'Thandi Mokoena',
     role:     'Senior Instrumentation Engineer',
     bio:      'Specialist in water analytics and SCADA systems with 12 years of municipal and industrial project experience. Expert in online analyser networks and process control.',
@@ -27,7 +27,7 @@ const EXPERTS = [
     email:    'admin1@eeesa.co.za',
   },
   {
-    photo:    '',
+    photo: 'images/experts/expert-3.jpg',
     name:     'Sipho Dlamini',
     role:     'Automation &amp; E&amp;I Project Manager',
     bio:      '15 years delivering large-scale E&amp;I installation and automation projects in mining and power sectors. Proven track record in on-time, on-budget project execution.',

@@ -40,7 +40,7 @@
     <div class="compliance-panel">
       <div class="compliance-block">
         <div style="width:100%;height:220px;overflow:hidden;border-radius:12px;margin-bottom:28px;">
-          <img src="images/services/service-automation.jpg" alt="Compliance" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+          <img src="images/about/compliance.jpg" alt="Compliance" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
         </div>
         <div class="section-label reveal">Compliance</div>
         <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(24px,2.8vw,38px);">Full Regulatory<br>Compliance</h2>
@@ -54,7 +54,7 @@
       </div>
       <div class="compliance-block">
         <div style="width:100%;height:220px;overflow:hidden;border-radius:12px;margin-bottom:28px;">
-          <img src="images/services/service-labour.jpg" alt="Safety" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
+          <img src="images/about/safety.jpg" alt="Safety" loading="lazy" style="width:100%;height:100%;object-fit:cover;"/>
         </div>
         <div class="section-label reveal">Safety</div>
         <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(24px,2.8vw,38px);">Safety-First<br>Engineering Culture</h2>

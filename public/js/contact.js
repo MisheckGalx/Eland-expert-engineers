@@ -13,7 +13,13 @@
   </svg>`;
 
   mount.innerHTML = `
-    <section class="contact-section">
+    <div style="min-height:100vh;position:relative;">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3582.5!2d27.9968!3d-26.1012!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e9573c8b9b9b9b9%3A0x1234!2s45+Annie+Rd%2C+Fontainebleau%2C+Randburg!5e0!3m2!1sen!2sza!4v1700000000000"
+        style="position:fixed;top:0;left:0;width:100%;height:100%;border:0;z-index:0;filter:brightness(0.45);"
+        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+      </iframe>
+      <div style="position:relative;z-index:1;">
+    <section class="contact-section" style="background:transparent;">
       <div class="section-label reveal">Get In Touch</div>
       <h1 class="section-title reveal reveal-delay-1">
         Start a Conversation<br>with Our Engineers

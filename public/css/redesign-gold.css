@@ -36,3 +36,16 @@
   top: 12px;
   left: 12px;
 }
+
+/* ── COMPACT SERVICES/PRODUCTS SECTION ── */
+.services-section { padding: 40px 5% !important; }
+.services-section .services-header { margin-bottom: 24px !important; }
+.services-section .section-title { font-size: clamp(22px,3vw,32px) !important; margin-bottom: 8px !important; }
+.services-section .section-sub { margin-bottom: 0 !important; font-size: 13px !important; }
+.services-grid { gap: 16px !important; }
+.service-card { padding: 0 0 16px !important; }
+.service-img-wrap { height: 140px !important; }
+.service-title { font-size: 14px !important; margin: 8px 12px 4px !important; }
+.service-desc { font-size: 12px !important; line-height: 1.5 !important; margin: 0 12px !important; }
+.service-num { font-size: 28px !important; margin: 8px 12px 0 !important; display: block; }
+.service-arrow { font-size: 12px !important; margin: 8px 12px 0 !important; }

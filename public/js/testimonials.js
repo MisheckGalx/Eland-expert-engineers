@@ -1,91 +1,29 @@
-/* ===== TESTIMONIALS SECTION =====
- * Fetches from /api/testimonials and renders star-rated client cards.
- * Falls back to static data if server is not running.
- */
-
-const STATIC_TESTIMONIALS = [
-  {
-    name:    'Gerhard van Niekerk',
-    company: 'Eskom Holdings',
-    role:    'Plant Manager',
-    content: 'Eland Expert Engineers delivered our turbine instrumentation overhaul on schedule and with zero safety incidents. Their technical depth and single-source accountability made this the smoothest project we\'ve run in years.',
-    rating:  5,
-  },
-  {
-    name:    'Nomvula Dlamini',
-    company: 'Rand Water',
-    role:    'Engineering Director',
-    content: 'The SCADA upgrade Eland delivered transformed our water treatment operations. Real-time visibility across all monitoring points — we reduced manual interventions by 40%. Outstanding work.',
-    rating:  5,
-  },
-  {
-    name:    'Pieter Botha',
-    company: 'Anglo American',
-    role:    'Project Engineer',
-    content: 'We\'ve worked with many E&I contractors. Eland is different — they actually understand our process, not just the wiring. Their obsolete instrumentation support saved us months of downtime.',
-    rating:  5,
-  },
-];
-
-function buildStars(rating) {
-  return Array.from({ length: 5 }, (_, i) =>
-    `<svg width="14" height="14" viewBox="0 0 24 24"
-      fill="${i < rating ? '#f4640a' : 'none'}"
-      stroke="${i < rating ? '#f4640a' : '#d1d5db'}"
-      stroke-width="1.5">
-      <polygon points="12,2 15.09,8.26 22,9.27 17,14.14 18.18,21.02 12,17.77 5.82,21.02 7,14.14 2,9.27 8.91,8.26"/>
-    </svg>`
-  ).join('');
-}
-
-function getInitials(name) {
-  return name.split(' ').map(n => n[0]).join('').toUpperCase().slice(0, 2);
-}
-
-function renderTestimonials(list) {
+(function buildFeaturedEquipment() {
   const mount = document.getElementById('testimonials-mount');
   if (!mount) return;
-
-  const cards = list.map((t, i) => `
-    <div class="testimonial-card reveal${i > 0 ? ' reveal-delay-' + Math.min(i, 3) : ''}">
-      <div class="testimonial-quote">&ldquo;</div>
-      <p class="testimonial-content">${t.content}</p>
-      <div class="testimonial-stars">${buildStars(t.rating)}</div>
-      <div class="testimonial-author">
-        <div class="testimonial-avatar">${getInitials(t.name)}</div>
-        <div class="testimonial-meta">
-          <span class="testimonial-name">${t.name}</span>
-          <span class="testimonial-role">${t.role}${t.company ? ' · ' + t.company : ''}</span>
-        </div>
-      </div>
+  const products = [
+    { img:'images/services/service-water.jpg', category:'Water Analytics', name:'Online Water Quality Analysers', desc:'Multi-parameter online analysers for pH, turbidity, dissolved oxygen, and conductivity — designed for continuous industrial and municipal monitoring.' },
+    { img:'images/services/service-automation.jpg', category:'Automation & Control', name:'PLC & MCC Systems', desc:'Programmable logic controllers and motor control centres for industrial automation — supplied, configured, and commissioned to your specification.' },
+    { img:'images/services/service-power.jpg', category:'Power Instrumentation', name:'Turbine & Boiler Instruments', desc:'Precision temperature, pressure, and flow measurement instruments for power generation — reliable in the most demanding plant environments.' },
+    { img:'images/services/service-distribution.jpg', category:'E&I Distribution', name:'Field Instruments & Transmitters', desc:'Full range of field instruments including pressure transmitters, level sensors, control valves, and cable systems from world-class manufacturers.' },
+  ];
+  const cards = products.map((p,i) => `
+    <div class="industry-card reveal${i>0?' reveal-delay-'+Math.min(i,3):''}" onclick="showPage('products')" style="cursor:pointer;">
+      <div class="service-img-wrap"><img src="${p.img}" alt="${p.name}" loading="lazy"/></div>
+      <div class="section-label" style="margin:14px 0 6px;">${p.category}</div>
+      <div class="industry-title">${p.name}</div>
+      <p class="industry-desc">${p.desc}</p>
     </div>`).join('');
-
   mount.innerHTML = `
-    <section class="testimonials-section">
-      <div class="section-label reveal">Client Testimonials</div>
-      <h2 class="section-title reveal reveal-delay-1">
-        What Our Clients Say
-      </h2>
-      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:48px;">
-        Trusted by power stations, water authorities, and mining operations across Southern Africa.
-      </p>
-      <div class="testimonials-grid">${cards}</div>
+    <section class="industries-section">
+      <div class="section-label reveal">Products & Equipment</div>
+      <h2 class="section-title reveal reveal-delay-1">Equipment We Supply &amp; Install</h2>
+      <p class="section-sub reveal reveal-delay-2" style="margin-bottom:40px;">Industry-leading instrumentation and electrical equipment — supplied, installed, and commissioned by our engineers.</p>
+      <div class="industries-grid">${cards}</div>
+      <div style="text-align:center;margin-top:40px;" class="reveal">
+        <a class="btn-primary" onclick="showPage('products')">View All Products
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12,5 19,12 12,19"/></svg>
+        </a>
+      </div>
     </section>`;
-
-  if (typeof initReveal === 'function') initReveal();
-}
-
-(async function initTestimonials() {
-  try {
-    const res  = await fetch('/api/testimonials');
-    const json = await res.json();
-    if (json.success && json.data.length > 0) {
-      renderTestimonials(json.data);
-    } else {
-      renderTestimonials(STATIC_TESTIMONIALS);
-    }
-  } catch {
-    // Server not running — use static fallback
-    renderTestimonials(STATIC_TESTIMONIALS);
-  }
 })();

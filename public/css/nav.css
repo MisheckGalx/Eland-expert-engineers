@@ -174,3 +174,11 @@ nav.scrolled .menu-toggle span { background: var(--navy); }
 .mobile-social .social-btn {
   border-color: var(--gray-200); color: var(--gray-600);
 }
+
+/* PAGE-LIGHT: nav on white background pages */
+nav.page-light { background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-200);box-shadow:var(--shadow-sm); }
+nav.page-light .logo-name { color:var(--navy); }
+nav.page-light .nav-links a { color:var(--text-mid); }
+nav.page-light .nav-links a:hover { color:var(--navy); }
+nav.page-light .menu-toggle span { background:var(--navy);box-shadow:none; }
+nav.page-light .social-btn { color:var(--gray-600);border-color:var(--gray-200); }

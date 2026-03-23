@@ -3,7 +3,7 @@
   const mount = document.getElementById('about-content-mount');
   if (!mount) return;
 
-  mount.innerHTML = `<div class="section-hero-banner"><div class="banner-fallback"></div><img src="images/banners/about-banner.jpg" alt="About" onerror="this.style.display='none'" /><div class="banner-overlay"></div><div class="banner-content"><div class="banner-label">Who We Are</div><h1>About Eland Expert Engineers</h1></div></div>
+  mount.innerHTML = `<div class="section-hero-banner"><div class="banner-fallback"></div><img src="images/about-main.jpg" alt="About" onerror="this.style.display='none'" /><div class="banner-overlay"></div><div class="banner-content"><div class="banner-label">Who We Are</div><h1>About Eland Expert Engineers</h1></div></div>
     <section class="about-section">
       <div class="section-label reveal">About Eland</div>
       <h1 class="section-title reveal reveal-delay-1"

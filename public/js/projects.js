@@ -13,7 +13,7 @@
   ];
 
   const cards = projects.map((p,i) => `
-    <div class="industry-card reveal${i>0?' reveal-delay-'+Math.min(i,3):''}" style="background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);">
+    <div class="industry-card reveal${i>0?' reveal-delay-'+Math.min(i,3):''}" >
       <div class="section-label" style="margin-bottom:8px;">${p.industry}</div>
       <div class="industry-title">${p.title}</div>
       <p class="industry-desc">${p.desc}</p>
@@ -24,12 +24,9 @@
     </div>`).join('');
 
   mount.innerHTML = `
-    <div style="min-height:100vh;background:url('images/slider/slide-05.jpg') center/cover fixed;position:relative;">
-      <div style="position:absolute;inset:0;background:rgba(10,20,40,0.6);"></div>
-      <div style="position:relative;z-index:1;padding:80px 5% 60px;">
-        <div class="section-label reveal" style="color:rgba(255,255,255,0.7);">Our Work</div>
-        <h1 class="section-title reveal reveal-delay-1" style="color:#fff;margin-bottom:48px;">Projects &amp; Case Studies</h1>
-        <div class="industries-grid">${cards}</div>
-      </div>
-    </div>`;
+    <section class="industries-section">
+      <div class="section-label reveal">Our Work</div>
+      <h1 class="section-title reveal reveal-delay-1" style="margin-bottom:48px;">Projects &amp; Case Studies</h1>
+      <div class="industries-grid">${cards}</div>
+    </section>`;
 })();

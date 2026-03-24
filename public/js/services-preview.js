@@ -3,15 +3,15 @@
   if (!mount) return;
 
   const services = [
-    { num:'01', img:'images/services/service-water.jpg',      title:'Water Analysis Engineering',       desc:'Water quality instrumentation and treatment process monitoring for municipal and industrial applications.' },
-    { num:'02', img:'images/services/service-power.jpg',       title:'Power Plant Instrumentation',      desc:'Precision measurement and control systems for power generation facilities operating at maximum efficiency.' },
-    { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'Full-scope electrical and instrumentation installation with integrated automation for industrial environments.' },
+    { num:'01', img:'images/services/service-water.jpg',      title:'Water Analysis Engineering',       desc:'' },
+    { num:'02', img:'images/services/service-power.jpg',       title:'Power Plant Instrumentation',      desc:'' },
+    { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'' },
   ];
 
   const products = [
-    { num:'01', img:'images/services/service-water.jpg',        title:'Online Water Quality Analysers',       desc:'Multi-parameter analysers for pH, turbidity, dissolved oxygen and conductivity for continuous monitoring.' },
-    { num:'02', img:'images/services/service-automation.jpg',   title:'PLC &amp; MCC Systems',                desc:'Programmable logic controllers and motor control centres — supplied, configured and commissioned to specification.' },
-    { num:'03', img:'images/services/service-distribution.jpg', title:'Field Instruments &amp; Transmitters',  desc:'Pressure transmitters, level sensors, control valves and cable systems from world-class manufacturers.' },
+    { num:'01', img:'images/services/service-water.jpg',        title:'Online Water Quality Analysers',       desc:'' },
+    { num:'02', img:'images/services/service-automation.jpg',   title:'PLC &amp; MCC Systems',                desc:'' },
+    { num:'03', img:'images/services/service-distribution.jpg', title:'Field Instruments &amp; Transmitters',  desc:'' },
   ];
 
   const makeCards = (items, page, arrow) => items.map((s,i) => `

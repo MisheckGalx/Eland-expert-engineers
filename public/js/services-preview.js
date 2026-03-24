@@ -7,6 +7,7 @@
     { num:'02', img:'images/services/service-power.jpg',       title:'Power Plant Instrumentation',      desc:'' },
     { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'' },
   ];
+  
   ];
 
   const makeCards = (items, page, arrow) => items.map((s,i) => `

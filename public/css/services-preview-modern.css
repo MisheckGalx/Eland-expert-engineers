@@ -1,0 +1,150 @@
+/* ============================= */
+/* SERVICES PREVIEW MODERN STYLE */
+/* ============================= */
+
+.services-preview {
+  padding: 80px 5%;
+}
+
+/* Grid Layout */
+.industries-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  perspective: 1500px;
+}
+
+/* Card Base */
+.industry-card {
+  position: relative;
+  width: 300px;
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+
+  opacity: 0;
+  transform-style: preserve-3d;
+
+  box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+
+  transition: transform 1.2s cubic-bezier(0.22, 1, 0.36, 1),
+              opacity 1s ease,
+              box-shadow 0.5s ease;
+}
+
+/* Full Image Background */
+.industry-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark gradient overlay (for readability) */
+.industry-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.1));
+}
+
+/* Glass text overlay */
+.text-overlay {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  width: 75%;
+
+  background: rgba(0,0,0,0.45);
+  backdrop-filter: blur(8px);
+
+  border-radius: 12px;
+  padding: 16px;
+
+  color: #fff;
+  font-family: 'DM Sans', sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+
+  z-index: 2;
+}
+
+/* Stars */
+.text-overlay .stars {
+  color: gold;
+  font-size: 14px;
+}
+
+/* Name */
+.text-overlay .customer {
+  font-weight: 600;
+  font-size: 14px;
+}
+
+/* Role */
+.text-overlay .role {
+  font-size: 12px;
+  color: #ccc;
+}
+
+/* Description */
+.text-overlay p {
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+/* ============================= */
+/* 🎬 ANIMATION MAGIC */
+/* ============================= */
+
+/* STARTING POSITIONS */
+.industry-card.left {
+  transform: translateX(-120%) rotateY(-12deg);
+}
+
+.industry-card.right {
+  transform: translateX(120%) rotateY(12deg);
+}
+
+.industry-card.middle {
+  transform: scale(0.9);
+}
+
+/* FINAL STATE */
+.industry-card.reveal {
+  opacity: 1;
+  transform: translateX(0) rotateY(0) scale(1);
+}
+
+/* CENTER CARD EMPHASIS */
+.industry-card.middle.reveal {
+  transform: scale(1.05);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+}
+
+/* Hover Effect */
+.industry-card:hover img {
+  transform: scale(1.08);
+  transition: transform 0.6s ease;
+}
+
+/* ============================= */
+/* 📱 RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+  .industries-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .industry-card {
+    width: 90%;
+    height: 350px;
+    transform: none !important;
+    opacity: 1;
+  }
+}

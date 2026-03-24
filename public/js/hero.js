@@ -69,7 +69,7 @@
         </h1>
 
         <p class="hero-sub">
-          Integrated solutions for power systems, automation, and water analytics —
+          Integrated solutions for power systems, automation, and water analytics 
           engineered from concept to commissioning with uncompromising precision.
         </p>
 

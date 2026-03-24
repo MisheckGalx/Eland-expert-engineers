@@ -10,18 +10,18 @@
 
   const positions = ['left','middle','right'];
 
-  const makeCards = services.map((s,i) => `
-    <div class="industry-card ${positions[i]}">
+  const makeCards = (items, page) => items.map((s) => `
+    <div class="industry-card reveal" onclick="showPage('${page}')">
+    
       <img src="${s.img}" alt="${s.title}" loading="lazy"/>
 
       <div class="text-overlay">
-        <div class="stars">★★★★★</div>
-        <div class="customer">${s.title}</div>
-        <div class="role">Client Review</div>
-        <p>${s.desc}</p>
+        <div class="title">${s.title}</div>
+        <div class="desc">${s.desc || 'High quality engineering solutions built for performance.'}</div>
       </div>
-    </div>
-  `).join('');
+
+  </div>
+`).join('');
 
   // KEEP YOUR ORIGINAL HEADER + BUTTON
   mount.innerHTML = `
@@ -60,5 +60,3 @@
       }
     });
   });
-
-})();

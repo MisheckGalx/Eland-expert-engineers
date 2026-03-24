@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Eland Admin — Products</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0;}
+    body{font-family:'Segoe UI',sans-serif;background:#f4f6f9;min-height:100vh;}
+    .login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
+    .login-box{background:#fff;border-radius:16px;padding:48px;width:100%;max-width:420px;box-shadow:0 8px 40px rgba(0,0,0,0.12);}
+    .login-box h1{font-size:22px;color:#0b1f3a;margin-bottom:8px;}
+    .login-box p{color:#888;font-size:14px;margin-bottom:32px;}
+    .admin{display:none;min-height:100vh;}
+    .admin-header{background:#0b1f3a;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
+    .admin-header h1{color:#fff;font-size:18px;}
+    .admin-header span{color:rgba(255,255,255,0.5);font-size:13px;}
+    .admin-body{padding:40px;max-width:1100px;margin:0 auto;}
+    .card{background:#fff;border-radius:12px;padding:32px;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
+    .card h2{font-size:17px;color:#0b1f3a;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
+    label{display:block;font-size:13px;font-weight:600;color:#444;margin-bottom:6px;}
+    input,select,textarea{width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:14px;outline:none;transition:border 0.2s;margin-bottom:16px;}
+    input:focus,select:focus,textarea:focus{border-color:#f4640a;}
+    textarea{height:80px;resize:vertical;}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+    .btn{padding:11px 24px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;}
+    .btn-orange{background:#f4640a;color:#fff;}
+    .btn-orange:hover{background:#d4530a;}
+    .btn-red{background:#fff;color:#dc2626;border:1.5px solid #dc2626;padding:6px 14px;font-size:12px;}
+    .btn-red:hover{background:#dc2626;color:#fff;}
+    .product-table{width:100%;border-collapse:collapse;}
+    .product-table th{text-align:left;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.08em;padding:10px 12px;border-bottom:2px solid #eee;}
+    .product-table td{padding:14px 12px;border-bottom:1px solid #f0f0f0;font-size:14px;color:#333;vertical-align:top;}
+    .product-table tr:hover td{background:#fafafa;}
+    .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:#e8f0fe;color:#1a56db;}
+    .msg{padding:12px 16px;border-radius:8px;font-size:14px;margin-bottom:16px;display:none;}
+    .msg.success{background:#dcfce7;color:#166534;display:block;}
+    .msg.error{background:#fee2e2;color:#dc2626;display:block;}
+    .empty{text-align:center;padding:40px;color:#aaa;font-size:14px;}
+  </style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div class="login" id="loginPage">
+  <div class="login-box">
+    <h1>Eland Admin</h1>
+    <p>Sign in to manage products</p>
+    <div id="loginMsg" class="msg"></div>
+    <label>Username</label>
+    <input type="text" id="loginUser" placeholder="Admin username"/>
+    <label>Password</label>
+    <input type="password" id="loginPass" placeholder="Password"/>
+    <button class="btn btn-orange" style="width:100%;" onclick="doLogin()">Sign In</button>
+  </div>
+</div>
+
+<!-- ADMIN PANEL -->
+<div class="admin" id="adminPage">
+  <div class="admin-header">
+    <h1>Eland Expert Engineers — Product Admin</h1>
+    <span>Logged in as Eland &nbsp;|&nbsp; <a href="#" onclick="doLogout()" style="color:#f4640a;text-decoration:none;">Logout</a></span>
+  </div>
+  <div class="admin-body">
+
+    <!-- Add Product -->
+    <div class="card">
+      <h2>Add New Product</h2>
+      <div id="addMsg" class="msg"></div>
+      <div class="grid2">
+        <div>
+          <label>Product Name *</label>
+          <input type="text" id="pName" placeholder="e.g. Pressure Transmitter"/>
+        </div>
+        <div>
+          <label>Brand / Manufacturer</label>
+          <input type="text" id="pBrand" placeholder="e.g. Endress+Hauser / Rosemount"/>
+        </div>
+      </div>
+      <label>Category *</label>
+      <select id="pCategory">
+        <option value="">Select category...</option>
+        <option>Instrumentation</option>
+        <option>Electrical</option>
+        <option>Automation</option>
+        <option>Water Analytics</option>
+        <option>Safety Systems</option>
+        <option>Other</option>
+      </select>
+      <label>Description</label>
+      <textarea id="pDesc" placeholder="Brief product description..."></textarea>
+      <button class="btn btn-orange" onclick="addProduct()">Add Product</button>
+    </div>
+
+    <!-- Product List -->
+    <div class="card">
+      <h2>Current Products (<span id="productCount">0</span>)</h2>
+      <div id="productList"></div>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var ADMIN = 'Eland', PASS = '007';
+  var loggedIn = false;
+
+  function doLogin() {
+    var u = document.getElementById('loginUser').value.trim();
+    var p = document.getElementById('loginPass').value.trim();
+    if (u === ADMIN && p === PASS) {
+      loggedIn = true;
+      document.getElementById('loginPage').style.display = 'none';
+      document.getElementById('adminPage').style.display = 'block';
+      loadProducts();
+    } else {
+      var m = document.getElementById('loginMsg');
+      m.className = 'msg error';
+      m.textContent = 'Invalid username or password.';
+    }
+  }
+
+  function doLogout() {
+    loggedIn = false;
+    document.getElementById('loginPage').style.display = 'flex';
+    document.getElementById('adminPage').style.display = 'none';
+    document.getElementById('loginUser').value = '';
+    document.getElementById('loginPass').value = '';
+  }
+
+  function loadProducts() {
+    fetch('/api/products')
+      .then(function(r){ return r.json(); })
+      .then(function(json){
+        var products = json.data || [];
+        document.getElementById('productCount').textContent = products.length;
+        var el = document.getElementById('productList');
+        if (!products.length) {
+          el.innerHTML = '<div class="empty">No products yet. Add your first product above.</div>';
+          return;
+        }
+        var html = '<table class="product-table"><thead><tr>' +
+          '<th>Name</th><th>Brand</th><th>Category</th><th>Description</th><th></th>' +
+          '</tr></thead><tbody>';
+        products.forEach(function(p) {
+          html += '<tr>' +
+            '<td><strong>' + p.name + '</strong></td>' +
+            '<td style="color:#666;">' + (p.brand||'—') + '</td>' +
+            '<td><span class="badge">' + p.category + '</span></td>' +
+            '<td style="color:#888;max-width:300px;">' + (p.description||'—') + '</td>' +
+            '<td><button class="btn btn-red" onclick="deleteProduct(' + p.id + ')">Delete</button></td>' +
+            '</tr>';
+        });
+        html += '</tbody></table>';
+        el.innerHTML = html;
+      })
+      .catch(function(){ document.getElementById('productList').innerHTML = '<div class="empty">Could not load products.</div>'; });
+  }
+
+  function addProduct() {
+    var name     = document.getElementById('pName').value.trim();
+    var brand    = document.getElementById('pBrand').value.trim();
+    var category = document.getElementById('pCategory').value;
+    var desc     = document.getElementById('pDesc').value.trim();
+    var msg      = document.getElementById('addMsg');
+
+    if (!name || !category) {
+      msg.className = 'msg error';
+      msg.textContent = 'Product name and category are required.';
+      return;
+    }
+
+    fetch('/api/products', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name:name, brand:brand, category:category, description:desc, admin:ADMIN, password:PASS })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      if (json.success) {
+        msg.className = 'msg success';
+        msg.textContent = 'Product added successfully!';
+        document.getElementById('pName').value = '';
+        document.getElementById('pBrand').value = '';
+        document.getElementById('pCategory').value = '';
+        document.getElementById('pDesc').value = '';
+        loadProducts();
+        setTimeout(function(){ msg.style.display='none'; }, 3000);
+      } else {
+        msg.className = 'msg error';
+        msg.textContent = json.message || 'Failed to add product.';
+      }
+    })
+    .catch(function(){
+      msg.className = 'msg error';
+      msg.textContent = 'Server error. Please try again.';
+    });
+  }
+
+  function deleteProduct(id) {
+    if (!confirm('Delete this product?')) return;
+    fetch('/api/products/' + id, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ admin:ADMIN, password:PASS })
+    })
+    .then(function(r){ return r.json(); })
+    .then(function(json){
+      if (json.success) loadProducts();
+      else alert('Failed to delete product.');
+    });
+  }
+
+  document.getElementById('loginPass').addEventListener('keydown', function(e){
+    if (e.key === 'Enter') doLogin();
+  });
+</script>
+</body>
+</html>

@@ -8,6 +8,7 @@ const contactRouter      = require('./routes/contact');
 const enquiriesRouter    = require('./routes/enquiries');
 const testimonialsRouter = require('./routes/testimonials');
 const projectsRouter     = require('./routes/projects');
+const productsRouter     = require('./routes/products');
 
 const app  = express();
 const PORT = process.env.PORT || 3000;
@@ -28,6 +29,7 @@ app.use('/api/contact',      contactLimiter, contactRouter);
 app.use('/api/enquiries',    enquiriesRouter);
 app.use('/api/testimonials', testimonialsRouter);
 app.use('/api/projects',     projectsRouter);
+app.use('/api/products',     productsRouter);
 
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', version: '1.0.0', env: process.env.NODE_ENV || 'development' });

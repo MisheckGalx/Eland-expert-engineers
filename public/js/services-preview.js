@@ -8,18 +8,19 @@
     { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'' },
   ];
 
+  const positions = ['left','middle','right'];
+
   const makeCards = (items, page, arrow) => items.map((s,i) => `
-    <div class="industry-card reveal${i>0?' reveal-delay-'+i:''}" onclick="showPage('${page}')" style="cursor:pointer;padding:0;overflow:hidden;">
-      <div style="width:100%;height:180px;overflow:hidden;">
-        <img src="${s.img}" alt="${s.title}" loading="lazy" style="width:100%;height:100%;object-fit:cover;transition:transform 0.4s ease;"/>
+    <div class="industry-card ${positions[i]}" onclick="showPage('${page}')" style="padding:0;overflow:hidden;">
+      <img src="${s.img}" alt="${s.title}" loading="lazy"/>
+      <div class="text-overlay">
+        <div class="stars">★★★★★</div>
+        <div class="customer">${s.title}</div>
+        <div class="role">Customer Role</div>
+        <p>${s.desc}</p>
       </div>
-      <div style="padding:24px;">
-        <div style="font-family:'Bebas Neue',sans-serif;font-size:11px;letter-spacing:0.22em;color:var(--gray-400);margin-bottom:8px;">${s.num}</div>
-        <div class="industry-title" style="font-size:17px;">${s.title}</div>
-        <p class="industry-desc" style="margin-top:8px;">${s.desc}</p>
-        <div style="margin-top:14px;font-size:13px;font-weight:600;color:var(--orange);">${arrow} &rarr;</div>
-      </div>
-    </div>`).join('');
+    </div>
+  `).join('');
 
   // Only include the Services section
   mount.innerHTML = `

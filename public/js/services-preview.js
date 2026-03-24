@@ -7,11 +7,6 @@
     { num:'02', img:'images/services/service-power.jpg',       title:'Power Plant Instrumentation',      desc:'' },
     { num:'03', img:'images/services/service-automation.jpg',  title:'Industrial Automation &amp; E&amp;I', desc:'' },
   ];
-
-  const products = [
-    { num:'01', img:'images/services/service-water.jpg',        title:'Online Water Quality Analysers',       desc:'' },
-    { num:'02', img:'images/services/service-automation.jpg',   title:'PLC &amp; MCC Systems',                desc:'' },
-    { num:'03', img:'images/services/service-distribution.jpg', title:'Field Instruments &amp; Transmitters',  desc:'' },
   ];
 
   const makeCards = (items, page, arrow) => items.map((s,i) => `

@@ -1,95 +1,71 @@
-/* === Modern Full-Image Service Preview Cards === */
+/* === Full-Image Service Cards === */
 .industries-grid {
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 0; /* no white gaps around */
   flex-wrap: wrap;
-  margin-top: 20px;
+  margin-top: 0;
 }
 
 .industry-card {
   position: relative;
-  flex: 1 1 calc(33.333% - 13px); /* 3 cards fit side by side with gap */
-  min-width: 280px; /* responsive fallback */
-  height: 320px;
-  border-radius: 12px;
+  flex: 1 1 calc(33.333%); /* 3 cards across */
+  min-width: 280px;
+  height: 350px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  background-color: #000; /* fallback while image loads */
+  transform: translateY(50px); /* start below for reveal */
+  opacity: 0; /* hidden until scroll */
 }
 
 .industry-card img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: cover; /* full image fill */
   display: block;
   transition: transform 0.4s ease;
 }
 
-/* Text overlay at bottom */
 .industry-card .text-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100%;
-  padding: 16px 20px;
-  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+  padding: 16px;
+  background: linear-gradient(to top, rgba(0,0,0,0.5), transparent);
   color: #fff;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
   box-sizing: border-box;
 }
 
-.industry-card .text-overlay .title {
+.industry-card .title {
   font-size: 18px;
   font-weight: 600;
-  line-height: 1.2;
 }
 
-.industry-card .text-overlay .desc {
+.industry-card .desc {
   font-size: 14px;
-  font-weight: 400;
-  line-height: 1.4;
+  margin-top: 4px;
   color: #eee;
 }
 
-/* Hover zoom effect */
+/* hover zoom */
 .industry-card:hover img {
   transform: scale(1.05);
 }
 
-.industry-card:hover {
-  box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-}
-
-/* Scroll reveal animation */
-.industry-card.reveal {
+/* === Scroll animation that triggers every time === */
+.industry-card.visible {
   opacity: 1;
   transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
-}
-
-.industry-card {
-  opacity: 0;
-  transform: translateY(40px);
-}
-
-/* Responsive adjustments */
-@media (max-width: 1024px) {
-  .industries-grid {
-    gap: 16px;
-  }
+  transition: transform 0.6s ease, opacity 0.6s ease;
 }
 
 @media (max-width: 768px) {
   .industries-grid {
     flex-direction: column;
-    align-items: center;
   }
   .industry-card {
-    flex: 1 1 90%;
-    height: 280px;
+    width: 100%;
+    height: 250px;
   }
 }

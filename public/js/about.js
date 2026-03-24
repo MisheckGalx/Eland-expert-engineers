@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="about-content reveal reveal-delay-1">
-          <p>Eland Expert Engineers (Pty) Ltd is a specialist electrical and instrumentation engineering company based in Randburg, South Africa. We are not simply a service provider — we are a strategic engineering partner for industrial clients who demand precision, performance, and complete accountability.</p>
+          <p>Eland Expert Engineers (Pty) Ltd is a specialist electrical and instrumentation engineering company based in Randburg, South Africa. We are not simply a service provider we are a strategic engineering partner for industrial clients who demand precision, performance, and complete accountability.</p>
           <p>Our multidisciplinary team brings deep expertise across power generation, water analytics, industrial automation, and instrumentation systems. From concept through commissioning and beyond, we deliver integrated solutions that eliminate the complexity of managing multiple engineering vendors.</p>
           <p>Our philosophy is simple: every system we engineer must deliver measurable performance improvement, operational reliability, and long-term value to our clients.</p>
           <div class="about-highlights">

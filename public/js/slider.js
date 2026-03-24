@@ -1,7 +1,7 @@
 /* ===== IMAGE SLIDER ===== */
 
 const SLIDES = [
-  { img: 'images/slider/slide-01.jpg', industry: 'Power Generation',       title: 'Turbine Instrumentation Overhaul' },
+  { img: 'images/slider/slide-01.jpg', industry: 'Power Generation',       title: 'Instrumentation Overhaul' },
   { img: 'images/slider/slide-02.jpg', industry: 'Water Treatment',         title: 'Municipal SCADA Upgrade' },
   { img: 'images/slider/slide-03.jpg', industry: 'Mining',                  title: 'E&amp;I Installation — Processing Plant' },
   { img: 'images/slider/slide-04.jpg', industry: 'Industrial Automation',   title: 'PLC &amp; MCC Installation' },

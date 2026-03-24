@@ -23,7 +23,7 @@
           </div>
         </div>
         <div class="about-content reveal reveal-delay-1">
-          <p>Eland Expert Engineers (Pty) Ltd is a specialist electrical and instrumentation engineering company based in Randburg, South Africa. We are not simply a service provider we are a strategic engineering partner for industrial clients who demand precision, performance, and complete accountability.</p>
+          <p>Eland Expert Engineers is a specialist electrical and instrumentation engineering company based in Randburg, South Africa. We are not simply a service provider we are a strategic engineering partner for industrial clients who demand precision, performance, and complete accountability.</p>
           <p>Our multidisciplinary team brings deep expertise across power generation, water analytics, industrial automation, and instrumentation systems. From concept through commissioning and beyond, we deliver integrated solutions that eliminate the complexity of managing multiple engineering vendors.</p>
           <p>Our philosophy is simple: every system we engineer must deliver measurable performance improvement, operational reliability, and long-term value to our clients.</p>
           <div class="about-highlights">
@@ -49,7 +49,7 @@
           <div class="compliance-item reveal">Payroll management and labour law compliance</div>
           <div class="compliance-item reveal reveal-delay-1">Full insurance coverage for all deployed staff</div>
           <div class="compliance-item reveal reveal-delay-2">Legal compliance across Southern African regulations</div>
-          <div class="compliance-item reveal reveal-delay-3">Risk-reduction through single-source accountability</div>
+          <div class="compliance-item reveal reveal-delay-3">Risk reduction through single source accountability</div>
         </div>
       </div>
       <div class="compliance-block">
@@ -60,7 +60,7 @@
         <h2 class="section-title reveal reveal-delay-1" style="font-size:clamp(24px,2.8vw,38px);">Safety-First<br>Engineering Culture</h2>
         <p style="color:var(--text-light);font-size:14px;line-height:1.7;font-weight:300;margin-top:10px;max-width:400px;" class="reveal reveal-delay-2">Every engineer deployed by Eland operates under industry-leading safety standards and site-specific protocols.</p>
         <div class="compliance-list">
-          <div class="compliance-item reveal">Industry-standard safety training for all personnel</div>
+          <div class="compliance-item reveal">Industry standard safety training for all personnel</div>
           <div class="compliance-item reveal reveal-delay-1">Site-specific health and safety compliance</div>
           <div class="compliance-item reveal reveal-delay-2">Zero-incident culture embedded in operations</div>
           <div class="compliance-item reveal reveal-delay-3">Continuous safety competency assessment</div>
@@ -70,7 +70,7 @@
 
     <div class="cta-banner" style="background-image:url('images/slider/slide-02.jpg')">
       <h2 class="reveal">Partner with <span>Eland</span></h2>
-      <p class="reveal reveal-delay-1">Discover what a true single-source engineering partner can deliver for your operation.</p>
+      <p class="reveal reveal-delay-1">Discover what a true single source engineering partner can deliver for your operation.</p>
       <a class="btn-primary reveal reveal-delay-2" onclick="showPage('contact')">Get in Touch &rarr;</a>
     </div>`;
 })();

@@ -13,12 +13,12 @@
             <div class="about-bg" style="background-image:url('images/about-main.jpg');background-size:cover;background-position:center;position:absolute;inset:0;border-radius:inherit;"></div>
             <div style="position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.7) 0%,rgba(0,0,0,0.1) 60%);border-radius:inherit;z-index:1;"></div>
             <div style="position:absolute;bottom:22px;left:22px;z-index:2;">
-              <div style="font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:3px;font-weight:700;">Headquarters</div>
+              <div style="font-size:9.5px;letter-spacing:0.22em;text-transform:uppercase;color:var(--orange);margin-bottom:3px;font-weight:700;"></div>
               <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--white);line-height:1;">Randburg, SA</div>
             </div>
           </div>
           <div class="about-badge">
-            <span class="num">15<span style="color:rgba(255,255,255,0.45);font-size:28px;">+</span></span>
+            <span class="num">3<span style="color:rgba(255,255,255,0.45);font-size:28px;">+</span></span>
             <span class="lbl">Years of Excellence</span>
           </div>
         </div>

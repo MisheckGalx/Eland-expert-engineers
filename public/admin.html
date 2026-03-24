@@ -4,216 +4,407 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Eland Admin — Products</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
-    *{box-sizing:border-box;margin:0;padding:0;}
-    body{font-family:'Segoe UI',sans-serif;background:#f4f6f9;min-height:100vh;}
-    .login{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;}
-    .login-box{background:#fff;border-radius:16px;padding:48px;width:100%;max-width:420px;box-shadow:0 8px 40px rgba(0,0,0,0.12);}
-    .login-box h1{font-size:22px;color:#0b1f3a;margin-bottom:8px;}
-    .login-box p{color:#888;font-size:14px;margin-bottom:32px;}
-    .admin{display:none;min-height:100vh;}
-    .admin-header{background:#0b1f3a;padding:20px 40px;display:flex;align-items:center;justify-content:space-between;}
-    .admin-header h1{color:#fff;font-size:18px;}
-    .admin-header span{color:rgba(255,255,255,0.5);font-size:13px;}
-    .admin-body{padding:40px;max-width:1100px;margin:0 auto;}
-    .card{background:#fff;border-radius:12px;padding:32px;margin-bottom:32px;box-shadow:0 2px 12px rgba(0,0,0,0.06);}
-    .card h2{font-size:17px;color:#0b1f3a;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid #eee;}
-    label{display:block;font-size:13px;font-weight:600;color:#444;margin-bottom:6px;}
-    input,select,textarea{width:100%;padding:10px 14px;border:1.5px solid #e0e0e0;border-radius:8px;font-size:14px;outline:none;transition:border 0.2s;margin-bottom:16px;}
-    input:focus,select:focus,textarea:focus{border-color:#f4640a;}
-    textarea{height:80px;resize:vertical;}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--navy:#0b1f3a;--navy2:#102847;--orange:#f4640a;--orange2:#d4530a;--white:#ffffff;--off:#f4f6f9;--border:#e2e8f0;--text:#1a1a2e;--muted:#64748b;--red:#dc2626;--green:#16a34a;--radius:10px;}
+    body{font-family:'DM Sans',sans-serif;background:var(--off);color:var(--text);min-height:100vh;}
+    .login-wrap{display:flex;align-items:center;justify-content:center;min-height:100vh;background:var(--navy);padding:20px;}
+    .login-box{background:var(--white);border-radius:16px;padding:48px;width:100%;max-width:420px;box-shadow:0 24px 80px rgba(0,0,0,0.3);}
+    .login-logo{display:flex;align-items:center;gap:12px;margin-bottom:32px;}
+    .login-logo img{height:44px;}
+    .login-logo-name{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:15px;color:var(--navy);}
+    .login-logo-sub{font-size:11px;color:var(--orange);font-weight:600;letter-spacing:0.1em;text-transform:uppercase;}
+    .login-box h2{font-family:'Space Grotesk',sans-serif;font-size:22px;color:var(--navy);margin-bottom:6px;}
+    .login-box p{font-size:14px;color:var(--muted);margin-bottom:28px;}
+    label{display:block;font-size:12px;font-weight:600;color:var(--muted);letter-spacing:0.05em;text-transform:uppercase;margin-bottom:6px;}
+    input,select,textarea{width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--radius);font-size:14px;font-family:'DM Sans',sans-serif;outline:none;transition:border 0.2s,box-shadow 0.2s;background:var(--white);color:var(--text);margin-bottom:16px;}
+    input:focus,select:focus,textarea:focus{border-color:var(--orange);box-shadow:0 0 0 3px rgba(244,100,10,0.1);}
+    textarea{height:90px;resize:vertical;}
+    .btn{padding:11px 22px;border:none;border-radius:var(--radius);font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;font-family:'DM Sans',sans-serif;display:inline-flex;align-items:center;gap:8px;}
+    .btn-primary{background:var(--orange);color:var(--white);}
+    .btn-primary:hover{background:var(--orange2);transform:translateY(-1px);}
+    .btn-outline{background:transparent;color:var(--orange);border:1.5px solid var(--orange);}
+    .btn-outline:hover{background:var(--orange);color:var(--white);}
+    .btn-danger{background:transparent;color:var(--red);border:1.5px solid var(--red);padding:6px 14px;font-size:12px;}
+    .btn-danger:hover{background:var(--red);color:var(--white);}
+    .btn-edit{background:transparent;color:var(--navy);border:1.5px solid var(--border);padding:6px 14px;font-size:12px;}
+    .btn-edit:hover{border-color:var(--navy);background:var(--navy);color:var(--white);}
+    .btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+    .btn-full{width:100%;justify-content:center;}
+    .msg{padding:12px 16px;border-radius:var(--radius);font-size:13px;margin-bottom:16px;display:none;}
+    .msg.show{display:block;}
+    .msg.success{background:#dcfce7;color:var(--green);border:1px solid #bbf7d0;}
+    .msg.error{background:#fee2e2;color:var(--red);border:1px solid #fecaca;}
+    .admin-wrap{display:none;min-height:100vh;}
+    .admin-header{background:var(--navy);padding:0 32px;height:64px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;border-bottom:3px solid var(--orange);}
+    .admin-header-left{display:flex;align-items:center;gap:16px;}
+    .admin-header-logo{display:flex;align-items:center;gap:10px;}
+    .admin-header-logo img{height:32px;}
+    .admin-header-title{font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:600;color:var(--white);}
+    .admin-header-badge{background:var(--orange);color:var(--white);font-size:10px;font-weight:700;padding:3px 8px;border-radius:20px;letter-spacing:0.08em;text-transform:uppercase;}
+    .admin-header-right{display:flex;align-items:center;gap:16px;}
+    .admin-header-user{font-size:13px;color:rgba(255,255,255,0.6);}
+    .admin-header-user span{color:var(--orange);font-weight:600;}
+    .logout-btn{font-size:13px;color:rgba(255,255,255,0.5);cursor:pointer;text-decoration:none;transition:color 0.2s;}
+    .logout-btn:hover{color:var(--orange);}
+    .stats-bar{background:var(--white);border-bottom:1px solid var(--border);padding:16px 32px;display:flex;gap:32px;}
+    .stat{display:flex;flex-direction:column;}
+    .stat-num{font-family:'Space Grotesk',sans-serif;font-size:24px;font-weight:700;color:var(--navy);line-height:1;}
+    .stat-lbl{font-size:12px;color:var(--muted);margin-top:3px;}
+    .stat-divider{width:1px;background:var(--border);}
+    .admin-body{padding:32px;max-width:1200px;margin:0 auto;}
+    .admin-grid{display:grid;grid-template-columns:380px 1fr;gap:24px;align-items:start;}
+    .card{background:var(--white);border-radius:12px;padding:28px;box-shadow:0 1px 8px rgba(0,0,0,0.06);border:1px solid var(--border);}
+    .card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border);}
+    .card-title{font-family:'Space Grotesk',sans-serif;font-size:15px;font-weight:700;color:var(--navy);}
+    .card-sub{font-size:12px;color:var(--muted);margin-top:2px;}
+    .img-upload-area{border:2px dashed var(--border);border-radius:var(--radius);padding:24px;text-align:center;cursor:pointer;transition:all 0.2s;margin-bottom:16px;position:relative;overflow:hidden;}
+    .img-upload-area:hover{border-color:var(--orange);background:rgba(244,100,10,0.03);}
+    .img-upload-area.has-img{border-style:solid;border-color:var(--orange);padding:0;}
+    .img-upload-area.has-img img{width:100%;height:180px;object-fit:cover;display:block;}
+    .img-upload-area input[type=file]{position:absolute;inset:0;opacity:0;cursor:pointer;width:100%;height:100%;}
+    .img-upload-icon{font-size:32px;margin-bottom:8px;}
+    .img-upload-text{font-size:13px;color:var(--muted);}
+    .img-upload-text strong{color:var(--orange);}
+    .img-change-btn{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,0.65);color:#fff;border:none;border-radius:6px;padding:5px 12px;font-size:11px;cursor:pointer;z-index:2;}
+    .products-grid{display:grid;gap:16px;}
+    .product-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;display:grid;grid-template-columns:110px 1fr auto;transition:box-shadow 0.2s;}
+    .product-item:hover{box-shadow:0 4px 20px rgba(0,0,0,0.08);}
+    .product-img{width:110px;height:110px;object-fit:cover;}
+    .product-img-placeholder{width:110px;height:110px;background:var(--off);display:flex;align-items:center;justify-content:center;font-size:32px;}
+    .product-info{padding:16px;}
+    .product-name{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;color:var(--navy);margin-bottom:4px;}
+    .product-brand{font-size:11px;color:var(--orange);font-weight:700;letter-spacing:0.08em;text-transform:uppercase;margin-bottom:4px;}
+    .product-cat{display:inline-block;background:#e8f0fe;color:#1a56db;font-size:11px;font-weight:600;padding:2px 8px;border-radius:20px;margin-bottom:6px;}
+    .product-desc{font-size:12px;color:var(--muted);line-height:1.5;}
+    .product-actions{padding:16px 12px;display:flex;flex-direction:column;gap:8px;justify-content:center;}
+    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:200;align-items:center;justify-content:center;padding:20px;}
+    .modal-overlay.show{display:flex;}
+    .modal{background:var(--white);border-radius:16px;padding:32px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;}
+    .modal-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;}
+    .modal-title{font-family:'Space Grotesk',sans-serif;font-size:17px;font-weight:700;color:var(--navy);}
+    .modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--muted);line-height:1;}
+    .modal-close:hover{color:var(--text);}
     .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-    .btn{padding:11px 24px;border:none;border-radius:8px;font-size:14px;font-weight:600;cursor:pointer;transition:all 0.2s;}
-    .btn-orange{background:#f4640a;color:#fff;}
-    .btn-orange:hover{background:#d4530a;}
-    .btn-red{background:#fff;color:#dc2626;border:1.5px solid #dc2626;padding:6px 14px;font-size:12px;}
-    .btn-red:hover{background:#dc2626;color:#fff;}
-    .product-table{width:100%;border-collapse:collapse;}
-    .product-table th{text-align:left;font-size:12px;color:#888;text-transform:uppercase;letter-spacing:0.08em;padding:10px 12px;border-bottom:2px solid #eee;}
-    .product-table td{padding:14px 12px;border-bottom:1px solid #f0f0f0;font-size:14px;color:#333;vertical-align:top;}
-    .product-table tr:hover td{background:#fafafa;}
-    .badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:600;background:#e8f0fe;color:#1a56db;}
-    .msg{padding:12px 16px;border-radius:8px;font-size:14px;margin-bottom:16px;display:none;}
-    .msg.success{background:#dcfce7;color:#166534;display:block;}
-    .msg.error{background:#fee2e2;color:#dc2626;display:block;}
-    .empty{text-align:center;padding:40px;color:#aaa;font-size:14px;}
+    .empty-state{text-align:center;padding:48px 24px;color:var(--muted);}
+    .empty-icon{font-size:40px;margin-bottom:12px;}
+    .empty-title{font-family:'Space Grotesk',sans-serif;font-size:15px;color:var(--navy);margin-bottom:6px;}
+    @media(max-width:900px){
+      .admin-grid{grid-template-columns:1fr;}
+      .product-item{grid-template-columns:80px 1fr;}
+      .product-actions{grid-column:1/-1;flex-direction:row;padding:0 16px 16px;}
+      .stats-bar{gap:20px;flex-wrap:wrap;}
+      .admin-body{padding:16px;}
+    }
   </style>
 </head>
 <body>
 
-<!-- LOGIN -->
-<div class="login" id="loginPage">
+<div class="login-wrap" id="loginPage">
   <div class="login-box">
-    <h1>Eland Admin</h1>
-    <p>Sign in to manage products</p>
+    <div class="login-logo">
+      <img src="images/logo.png" alt="Eland" onerror="this.style.display='none'"/>
+      <div>
+        <div class="login-logo-name">Eland Expert Engineers</div>
+        <div class="login-logo-sub">Admin Portal</div>
+      </div>
+    </div>
+    <h2>Sign In</h2>
+    <p>Manage your products and equipment listings</p>
     <div id="loginMsg" class="msg"></div>
     <label>Username</label>
-    <input type="text" id="loginUser" placeholder="Admin username"/>
+    <input type="text" id="loginUser" placeholder="Enter username" autocomplete="username"/>
     <label>Password</label>
-    <input type="password" id="loginPass" placeholder="Password"/>
-    <button class="btn btn-orange" style="width:100%;" onclick="doLogin()">Sign In</button>
+    <input type="password" id="loginPass" placeholder="Enter password" autocomplete="current-password"/>
+    <button class="btn btn-primary btn-full" onclick="doLogin()">Sign In &rarr;</button>
   </div>
 </div>
 
-<!-- ADMIN PANEL -->
-<div class="admin" id="adminPage">
-  <div class="admin-header">
-    <h1>Eland Expert Engineers — Product Admin</h1>
-    <span>Logged in as Eland &nbsp;|&nbsp; <a href="#" onclick="doLogout()" style="color:#f4640a;text-decoration:none;">Logout</a></span>
-  </div>
-  <div class="admin-body">
-
-    <!-- Add Product -->
-    <div class="card">
-      <h2>Add New Product</h2>
-      <div id="addMsg" class="msg"></div>
-      <div class="grid2">
-        <div>
-          <label>Product Name *</label>
-          <input type="text" id="pName" placeholder="e.g. Pressure Transmitter"/>
-        </div>
-        <div>
-          <label>Brand / Manufacturer</label>
-          <input type="text" id="pBrand" placeholder="e.g. Endress+Hauser / Rosemount"/>
-        </div>
+<div class="admin-wrap" id="adminPage">
+  <header class="admin-header">
+    <div class="admin-header-left">
+      <div class="admin-header-logo">
+        <img src="images/logo.png" alt="Eland" onerror="this.style.display='none'"/>
+        <span class="admin-header-title">Eland Expert Engineers</span>
       </div>
-      <label>Category *</label>
-      <select id="pCategory">
-        <option value="">Select category...</option>
-        <option>Instrumentation</option>
-        <option>Electrical</option>
-        <option>Automation</option>
-        <option>Water Analytics</option>
-        <option>Safety Systems</option>
-        <option>Other</option>
-      </select>
-      <label>Description</label>
-      <textarea id="pDesc" placeholder="Brief product description..."></textarea>
-      <button class="btn btn-orange" onclick="addProduct()">Add Product</button>
+      <span class="admin-header-badge">Admin</span>
     </div>
-
-    <!-- Product List -->
-    <div class="card">
-      <h2>Current Products (<span id="productCount">0</span>)</h2>
-      <div id="productList"></div>
+    <div class="admin-header-right">
+      <span class="admin-header-user">Logged in as <span>Eland</span></span>
+      <a class="logout-btn" onclick="doLogout()">Logout</a>
     </div>
+  </header>
 
+  <div class="stats-bar">
+    <div class="stat"><span class="stat-num" id="statTotal">0</span><span class="stat-lbl">Total Products</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" id="statCats">0</span><span class="stat-lbl">Categories</span></div>
+    <div class="stat-divider"></div>
+    <div class="stat"><span class="stat-num" id="statImgs">0</span><span class="stat-lbl">With Images</span></div>
+  </div>
+
+  <div class="admin-body">
+    <div class="admin-grid">
+
+      <div class="card" style="position:sticky;top:80px;">
+        <div class="card-header">
+          <div><div class="card-title">Add New Product</div><div class="card-sub">Fill in the details below</div></div>
+        </div>
+        <div id="addMsg" class="msg"></div>
+        <label>Product Image (max 15MB)</label>
+        <div class="img-upload-area" id="addImgArea">
+          <input type="file" id="addImgFile" accept="image/jpeg,image/png,image/webp" onchange="previewImg(this,'addImgArea','addImgPreview','addImgPlaceholder')"/>
+          <div id="addImgPreview" style="display:none;position:relative;">
+            <img id="addImgThumb" src="" alt="Preview"/>
+            <button class="img-change-btn" type="button" onclick="triggerFile('addImgFile')">Change Image</button>
+          </div>
+          <div id="addImgPlaceholder">
+            <div class="img-upload-icon">📷</div>
+            <div class="img-upload-text">Click to upload image<br/><strong>JPG, PNG or WebP</strong> up to 15MB</div>
+          </div>
+        </div>
+        <label>Product Name *</label>
+        <input type="text" id="pName" placeholder="e.g. Pressure Transmitter"/>
+        <label>Brand / Manufacturer</label>
+        <input type="text" id="pBrand" placeholder="e.g. Endress+Hauser / Rosemount"/>
+        <label>Category *</label>
+        <select id="pCategory">
+          <option value="">Select category...</option>
+          <option>Instrumentation</option>
+          <option>Electrical</option>
+          <option>Automation</option>
+          <option>Water Analytics</option>
+          <option>Safety Systems</option>
+          <option>Other</option>
+        </select>
+        <label>Description</label>
+        <textarea id="pDesc" placeholder="Brief product description..."></textarea>
+        <button class="btn btn-primary btn-full" id="addBtn" onclick="addProduct()">Add Product</button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <div><div class="card-title">Products (<span id="productCount">0</span>)</div><div class="card-sub">Click edit to update any product</div></div>
+        </div>
+        <div id="productList"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="editModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-title">Edit Product</div>
+      <button class="modal-close" onclick="closeEdit()">&times;</button>
+    </div>
+    <div id="editMsg" class="msg"></div>
+    <input type="hidden" id="editId"/>
+    <label>Product Image (max 15MB)</label>
+    <div class="img-upload-area" id="editImgArea">
+      <input type="file" id="editImgFile" accept="image/jpeg,image/png,image/webp" onchange="previewImg(this,'editImgArea','editImgPreview','editImgPlaceholder')"/>
+      <div id="editImgPreview" style="display:none;position:relative;">
+        <img id="editImgThumb" src="" alt="Preview"/>
+        <button class="img-change-btn" type="button" onclick="triggerFile('editImgFile')">Change Image</button>
+      </div>
+      <div id="editImgPlaceholder">
+        <div class="img-upload-icon">📷</div>
+        <div class="img-upload-text">Click to upload new image<br/><strong>JPG, PNG or WebP</strong></div>
+      </div>
+    </div>
+    <div class="grid2">
+      <div><label>Product Name *</label><input type="text" id="editName" placeholder="Product name"/></div>
+      <div><label>Brand</label><input type="text" id="editBrand" placeholder="Brand / Manufacturer"/></div>
+    </div>
+    <label>Category *</label>
+    <select id="editCategory">
+      <option value="">Select category...</option>
+      <option>Instrumentation</option>
+      <option>Electrical</option>
+      <option>Automation</option>
+      <option>Water Analytics</option>
+      <option>Safety Systems</option>
+      <option>Other</option>
+    </select>
+    <label>Description</label>
+    <textarea id="editDesc" placeholder="Product description..."></textarea>
+    <div style="display:flex;gap:12px;margin-top:8px;">
+      <button class="btn btn-primary" style="flex:1;justify-content:center;" onclick="saveEdit()">Save Changes</button>
+      <button class="btn btn-outline" onclick="closeEdit()">Cancel</button>
+    </div>
   </div>
 </div>
 
 <script>
-  var ADMIN = 'Eland', PASS = '007';
-  var loggedIn = false;
+var ADMIN='Eland', PASS='007';
 
-  function doLogin() {
-    var u = document.getElementById('loginUser').value.trim();
-    var p = document.getElementById('loginPass').value.trim();
-    if (u === ADMIN && p === PASS) {
-      loggedIn = true;
-      document.getElementById('loginPage').style.display = 'none';
-      document.getElementById('adminPage').style.display = 'block';
-      loadProducts();
-    } else {
-      var m = document.getElementById('loginMsg');
-      m.className = 'msg error';
-      m.textContent = 'Invalid username or password.';
-    }
-  }
+function doLogin(){
+  var u=document.getElementById('loginUser').value.trim();
+  var p=document.getElementById('loginPass').value.trim();
+  if(u===ADMIN&&p===PASS){
+    document.getElementById('loginPage').style.display='none';
+    document.getElementById('adminPage').style.display='block';
+    loadProducts();
+  } else showMsg('loginMsg','error','Invalid username or password.');
+}
 
-  function doLogout() {
-    loggedIn = false;
-    document.getElementById('loginPage').style.display = 'flex';
-    document.getElementById('adminPage').style.display = 'none';
-    document.getElementById('loginUser').value = '';
-    document.getElementById('loginPass').value = '';
-  }
+function doLogout(){
+  document.getElementById('loginPage').style.display='flex';
+  document.getElementById('adminPage').style.display='none';
+  document.getElementById('loginUser').value='';
+  document.getElementById('loginPass').value='';
+}
 
-  function loadProducts() {
-    fetch('/api/products')
-      .then(function(r){ return r.json(); })
-      .then(function(json){
-        var products = json.data || [];
-        document.getElementById('productCount').textContent = products.length;
-        var el = document.getElementById('productList');
-        if (!products.length) {
-          el.innerHTML = '<div class="empty">No products yet. Add your first product above.</div>';
-          return;
-        }
-        var html = '<table class="product-table"><thead><tr>' +
-          '<th>Name</th><th>Brand</th><th>Category</th><th>Description</th><th></th>' +
-          '</tr></thead><tbody>';
-        products.forEach(function(p) {
-          html += '<tr>' +
-            '<td><strong>' + p.name + '</strong></td>' +
-            '<td style="color:#666;">' + (p.brand||'—') + '</td>' +
-            '<td><span class="badge">' + p.category + '</span></td>' +
-            '<td style="color:#888;max-width:300px;">' + (p.description||'—') + '</td>' +
-            '<td><button class="btn btn-red" onclick="deleteProduct(' + p.id + ')">Delete</button></td>' +
-            '</tr>';
-        });
-        html += '</tbody></table>';
-        el.innerHTML = html;
-      })
-      .catch(function(){ document.getElementById('productList').innerHTML = '<div class="empty">Could not load products.</div>'; });
-  }
+document.getElementById('loginPass').addEventListener('keydown',function(e){if(e.key==='Enter')doLogin();});
 
-  function addProduct() {
-    var name     = document.getElementById('pName').value.trim();
-    var brand    = document.getElementById('pBrand').value.trim();
-    var category = document.getElementById('pCategory').value;
-    var desc     = document.getElementById('pDesc').value.trim();
-    var msg      = document.getElementById('addMsg');
+function showMsg(id,type,text){
+  var el=document.getElementById(id);
+  el.className='msg show '+type; el.textContent=text;
+  if(type==='success') setTimeout(function(){el.className='msg';},3500);
+}
 
-    if (!name || !category) {
-      msg.className = 'msg error';
-      msg.textContent = 'Product name and category are required.';
-      return;
-    }
+function triggerFile(id){ document.getElementById(id).click(); }
 
-    fetch('/api/products', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name:name, brand:brand, category:category, description:desc, admin:ADMIN, password:PASS })
-    })
-    .then(function(r){ return r.json(); })
+function previewImg(input,areaId,previewId,placeholderId){
+  var file=input.files[0];
+  if(!file) return;
+  if(file.size>15*1024*1024){alert('Image must be under 15MB');input.value='';return;}
+  var reader=new FileReader();
+  reader.onload=function(e){
+    var area=document.getElementById(areaId);
+    var preview=document.getElementById(previewId);
+    preview.querySelector('img').src=e.target.result;
+    preview.style.display='block';
+    document.getElementById(placeholderId).style.display='none';
+    area.classList.add('has-img');
+  };
+  reader.readAsDataURL(file);
+}
+
+function loadProducts(){
+  fetch('/api/products')
+    .then(function(r){return r.json();})
     .then(function(json){
-      if (json.success) {
-        msg.className = 'msg success';
-        msg.textContent = 'Product added successfully!';
-        document.getElementById('pName').value = '';
-        document.getElementById('pBrand').value = '';
-        document.getElementById('pCategory').value = '';
-        document.getElementById('pDesc').value = '';
-        loadProducts();
-        setTimeout(function(){ msg.style.display='none'; }, 3000);
-      } else {
-        msg.className = 'msg error';
-        msg.textContent = json.message || 'Failed to add product.';
+      var products=json.data||[];
+      document.getElementById('productCount').textContent=products.length;
+      document.getElementById('statTotal').textContent=products.length;
+      document.getElementById('statCats').textContent=[...new Set(products.map(function(p){return p.category;}))].length;
+      document.getElementById('statImgs').textContent=products.filter(function(p){return p.image_path;}).length;
+      var el=document.getElementById('productList');
+      if(!products.length){
+        el.innerHTML='<div class="empty-state"><div class="empty-icon">📦</div><div class="empty-title">No products yet</div><p style="font-size:13px;">Add your first product using the form.</p></div>';
+        return;
       }
+      var html='<div class="products-grid">';
+      products.forEach(function(p){
+        var imgEl=p.image_path
+          ?'<img class="product-img" src="'+p.image_path+'" alt="'+p.name+'"/>'
+          :'<div class="product-img-placeholder">📦</div>';
+        html+='<div class="product-item">'+imgEl+
+          '<div class="product-info">'+
+          (p.brand?'<div class="product-brand">'+p.brand+'</div>':'')+
+          '<div class="product-name">'+p.name+'</div>'+
+          '<span class="product-cat">'+p.category+'</span>'+
+          (p.description?'<div class="product-desc">'+p.description+'</div>':'')+
+          '</div>'+
+          '<div class="product-actions">'+
+          '<button class="btn btn-edit" onclick=\'openEdit('+JSON.stringify(p)+')\'>Edit</button>'+
+          '<button class="btn btn-danger" onclick="deleteProduct('+p.id+')">Delete</button>'+
+          '</div></div>';
+      });
+      html+='</div>';
+      el.innerHTML=html;
     })
-    .catch(function(){
-      msg.className = 'msg error';
-      msg.textContent = 'Server error. Please try again.';
-    });
-  }
+    .catch(function(){document.getElementById('productList').innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><div class="empty-title">Could not load products</div></div>';});
+}
 
-  function deleteProduct(id) {
-    if (!confirm('Delete this product?')) return;
-    fetch('/api/products/' + id, {
-      method: 'DELETE',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ admin:ADMIN, password:PASS })
-    })
-    .then(function(r){ return r.json(); })
+function addProduct(){
+  var name=document.getElementById('pName').value.trim();
+  var brand=document.getElementById('pBrand').value.trim();
+  var category=document.getElementById('pCategory').value;
+  var desc=document.getElementById('pDesc').value.trim();
+  var file=document.getElementById('addImgFile').files[0];
+  if(!name||!category){showMsg('addMsg','error','Product name and category are required.');return;}
+  var btn=document.getElementById('addBtn');
+  btn.disabled=true; btn.textContent='Adding...';
+  var fd=new FormData();
+  fd.append('admin',ADMIN);fd.append('password',PASS);
+  fd.append('name',name);fd.append('brand',brand);
+  fd.append('category',category);fd.append('description',desc);
+  if(file) fd.append('image',file);
+  fetch('/api/products',{method:'POST',body:fd})
+    .then(function(r){return r.json();})
     .then(function(json){
-      if (json.success) loadProducts();
-      else alert('Failed to delete product.');
-    });
-  }
+      if(json.success){
+        showMsg('addMsg','success','Product added successfully!');
+        ['pName','pBrand','pDesc'].forEach(function(id){document.getElementById(id).value='';});
+        document.getElementById('pCategory').value='';
+        document.getElementById('addImgFile').value='';
+        document.getElementById('addImgPreview').style.display='none';
+        document.getElementById('addImgPlaceholder').style.display='block';
+        document.getElementById('addImgArea').classList.remove('has-img');
+        loadProducts();
+      } else showMsg('addMsg','error',json.message||'Failed to add product.');
+    })
+    .catch(function(){showMsg('addMsg','error','Server error. Please try again.');})
+    .finally(function(){btn.disabled=false;btn.textContent='Add Product';});
+}
 
-  document.getElementById('loginPass').addEventListener('keydown', function(e){
-    if (e.key === 'Enter') doLogin();
-  });
+function openEdit(p){
+  document.getElementById('editId').value=p.id;
+  document.getElementById('editName').value=p.name;
+  document.getElementById('editBrand').value=p.brand||'';
+  document.getElementById('editCategory').value=p.category;
+  document.getElementById('editDesc').value=p.description||'';
+  if(p.image_path){
+    document.getElementById('editImgThumb').src=p.image_path;
+    document.getElementById('editImgPreview').style.display='block';
+    document.getElementById('editImgPlaceholder').style.display='none';
+    document.getElementById('editImgArea').classList.add('has-img');
+  } else {
+    document.getElementById('editImgPreview').style.display='none';
+    document.getElementById('editImgPlaceholder').style.display='block';
+    document.getElementById('editImgArea').classList.remove('has-img');
+  }
+  document.getElementById('editModal').classList.add('show');
+}
+
+function closeEdit(){
+  document.getElementById('editModal').classList.remove('show');
+  document.getElementById('editImgFile').value='';
+}
+
+function saveEdit(){
+  var id=document.getElementById('editId').value;
+  var name=document.getElementById('editName').value.trim();
+  var brand=document.getElementById('editBrand').value.trim();
+  var category=document.getElementById('editCategory').value;
+  var desc=document.getElementById('editDesc').value.trim();
+  var file=document.getElementById('editImgFile').files[0];
+  if(!name||!category){showMsg('editMsg','error','Name and category are required.');return;}
+  var fd=new FormData();
+  fd.append('admin',ADMIN);fd.append('password',PASS);
+  fd.append('name',name);fd.append('brand',brand);
+  fd.append('category',category);fd.append('description',desc);
+  if(file) fd.append('image',file);
+  fetch('/api/products/'+id,{method:'PUT',body:fd})
+    .then(function(r){return r.json();})
+    .then(function(json){
+      if(json.success){closeEdit();loadProducts();}
+      else showMsg('editMsg','error',json.message||'Failed to save.');
+    })
+    .catch(function(){showMsg('editMsg','error','Server error.');});
+}
+
+function deleteProduct(id){
+  if(!confirm('Delete this product? This cannot be undone.')) return;
+  fetch('/api/products/'+id,{method:'DELETE',headers:{'Content-Type':'application/json'},body:JSON.stringify({admin:ADMIN,password:PASS})})
+    .then(function(r){return r.json();})
+    .then(function(json){if(json.success)loadProducts();else alert('Failed to delete.');});
+}
 </script>
 </body>
 </html>

@@ -8,22 +8,17 @@
     { img:'images/services/service-automation.jpg', title:'Industrial Automation & E&I', desc:'Advanced automation with seamless integration.' }
   ];
 
-  const positions = ['left','middle','right'];
-
   const makeCards = (items, page) => items.map((s) => `
-    <div class="industry-card reveal" onclick="showPage('${page}')">
-    
+    <div class="industry-card" onclick="showPage('${page}')">
       <img src="${s.img}" alt="${s.title}" loading="lazy"/>
-
       <div class="text-overlay">
         <div class="title">${s.title}</div>
         <div class="desc">${s.desc || 'High quality engineering solutions built for performance.'}</div>
       </div>
+    </div>
+  `).join('');
 
-  </div>
-`).join('');
-
-  // KEEP YOUR ORIGINAL HEADER + BUTTON
+  // RENDER THE SECTION
   mount.innerHTML = `
     <section style="padding:60px 5% 20px;">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
@@ -41,12 +36,12 @@
       </div>
 
       <div class="industries-grid">
-        ${makeCards}
+        ${makeCards(services,'services')}
       </div>
     </section>
   `;
 
-  // ✅ SCROLL ANIMATION (CORRECT PLACE)
+  // SCROLL REVEAL ANIMATION
   const cards = mount.querySelectorAll('.industry-card');
 
   window.addEventListener('scroll', () => {
@@ -54,9 +49,8 @@
 
     cards.forEach(card => {
       const cardTop = card.getBoundingClientRect().top;
-
-      if (cardTop < trigger) {
-        card.classList.add('reveal');
-      }
+      if (cardTop < trigger) card.classList.add('reveal');
     });
   });
+
+})();

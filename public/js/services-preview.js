@@ -10,20 +10,17 @@
 
   const positions = ['left','middle','right'];
 
+  // Build full-image blocks
   const makeCards = services.map((s,i) => `
-    <div class="industry-card ${positions[i]}">
-      <img src="${s.img}" alt="${s.title}" loading="lazy"/>
-
+    <div class="industry-image ${positions[i]}">
+      <div class="background" style="background-image:url('${s.img}');"></div>
       <div class="text-overlay">
-        <div class="stars">★★★★★</div>
-        <div class="customer">${s.title}</div>
-        <div class="role">Client Review</div>
+        <h3>${s.title}</h3>
         <p>${s.desc}</p>
       </div>
     </div>
   `).join('');
 
-  // KEEP YOUR ORIGINAL HEADER + BUTTON
   mount.innerHTML = `
     <section style="padding:60px 5% 20px;">
       <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
@@ -31,25 +28,17 @@
           <div class="section-label">What We Offer</div>
           <h2 class="section-title" style="margin-bottom:0;">Our Services</h2>
         </div>
-        <a class="btn-primary" onclick="showPage('services')" style="flex-shrink:0;">
-          View All Services
-          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-            <line x1="5" y1="12" x2="19" y2="12"/>
-            <polyline points="12,5 19,12 12,19"/>
-          </svg>
-        </a>
       </div>
-
       <div class="industries-grid">
         ${makeCards}
       </div>
     </section>
   `;
 
-  // ✅ SCROLL ANIMATION (CORRECT PLACE)
-  const cards = mount.querySelectorAll('.industry-card');
+  // Scroll animation: triggers both on scroll down & up
+  const cards = mount.querySelectorAll('.industry-image');
 
-  window.addEventListener('scroll', () => {
+  function handleScroll() {
     const trigger = window.innerHeight / 1.2;
 
     cards.forEach(card => {
@@ -57,8 +46,12 @@
 
       if (cardTop < trigger) {
         card.classList.add('reveal');
+      } else {
+        card.classList.remove('reveal'); // allows repeating animation
       }
     });
-  });
+  }
 
+  window.addEventListener('scroll', handleScroll);
+  window.addEventListener('load', handleScroll); // trigger on page load
 })();

@@ -50,9 +50,9 @@
 
   const rows = services.map(s => `
     <div class="service-detail-row reveal">
-      <div>
+      <div class="service-detail-img-wrap">
+        <img src="${s.img}" alt="${s.title}" loading="lazy" />
         <span class="service-detail-num">${s.num}</span>
-        <div class="service-detail-icon-wrap">${s.icon}</div>
       </div>
       <div>
         <div class="service-detail-title">${s.title}</div>
@@ -61,31 +61,20 @@
           ${s.tags.map(t => `<span class="tag">${t}</span>`).join('')}
         </div>
       </div>
-      <div class="service-detail-value">
-        <h5>Value Delivered</h5>
-        <p>${s.value}</p>
-      </div>
     </div>`).join('');
 
   mount.innerHTML = `
     <section class="services-detail-section">
       <div class="section-label reveal">What We Do</div>
-      <h1 class="section-title reveal reveal-delay-1">
-        Our Engineering<br>Service Lines
-      </h1>
+      <h1 class="section-title reveal reveal-delay-1">Our Engineering<br>Service Lines</h1>
       <p class="section-sub reveal reveal-delay-2" style="margin-top:12px;">
         Six specialized disciplines unified under one strategic partner.
       </p>
       <div class="services-detail-grid">${rows}</div>
     </section>
-
-    <div class="cta-banner">
+    <div class="cta-banner" style="background-image:url('images/slider/slide-04.jpg')">
       <h2 class="reveal">Need a <span>Custom Solution?</span></h2>
-      <p class="reveal reveal-delay-1">
-        Speak to our engineering team to design the right solution for your operation.
-      </p>
-      <a class="btn-primary reveal reveal-delay-2" onclick="showPage('contact')">
-        Request a Consultation &rarr;
-      </a>
+      <p class="reveal reveal-delay-1">Speak to our engineering team to design the right solution for your operation.</p>
+      <a class="btn-primary reveal reveal-delay-2" onclick="showPage('contact')">Request a Consultation &rarr;</a>
     </div>`;
 })();

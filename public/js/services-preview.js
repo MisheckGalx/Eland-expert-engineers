@@ -10,10 +10,9 @@
 
   const positions = ['left','middle','right'];
 
-  // Build full-image blocks
   const makeCards = services.map((s,i) => `
     <div class="industry-image ${positions[i]}">
-      <div class="background" style="background-image:url('${s.img}');"></div>
+      <img src="${s.img}" alt="${s.title}" loading="lazy"/>
       <div class="text-overlay">
         <h3>${s.title}</h3>
         <p>${s.desc}</p>
@@ -23,22 +22,16 @@
 
   mount.innerHTML = `
     <section style="padding:60px 5% 20px;">
-      <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:16px;margin-bottom:32px;">
-        <div>
-          <div class="section-label">What We Offer</div>
-          <h2 class="section-title" style="margin-bottom:0;">Our Services</h2>
-        </div>
-      </div>
       <div class="industries-grid">
         ${makeCards}
       </div>
     </section>
   `;
 
-  // Scroll animation: triggers both on scroll down & up
+  // SCROLL ANIMATION
   const cards = mount.querySelectorAll('.industry-image');
 
-  function handleScroll() {
+  const revealOnScroll = () => {
     const trigger = window.innerHeight / 1.2;
 
     cards.forEach(card => {
@@ -47,11 +40,11 @@
       if (cardTop < trigger) {
         card.classList.add('reveal');
       } else {
-        card.classList.remove('reveal'); // allows repeating animation
+        card.classList.remove('reveal'); // allows scroll-up magic
       }
     });
-  }
+  };
 
-  window.addEventListener('scroll', handleScroll);
-  window.addEventListener('load', handleScroll); // trigger on page load
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // reveal if already in view
 })();

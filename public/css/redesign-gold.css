@@ -66,3 +66,19 @@
 .sp-desc { font-size:12.5px; color:var(--fg-muted); line-height:1.6; margin:0 0 12px; }
 .sp-link { font-size:12px; font-weight:600; color:var(--gold); letter-spacing:0.04em; }
 @media(max-width:768px) { .sp-grid { grid-template-columns:1fr; } .sp-header { flex-direction:column; align-items:flex-start; } }
+
+/* ── SERVICE PREVIEW CARDS ── */
+.svc-preview-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:20px; }
+.svc-preview-card { cursor:pointer;border-radius:var(--radius);overflow:hidden;position:relative; }
+.svc-preview-img { position:relative;height:340px;overflow:hidden; }
+.svc-preview-img img { width:100%;height:100%;object-fit:cover;transition:transform 0.5s ease; }
+.svc-preview-card:hover .svc-preview-img img { transform:scale(1.06); }
+.svc-preview-overlay { position:absolute;inset:0;background:linear-gradient(to top,rgba(5,12,28,0.85) 0%,rgba(5,12,28,0.2) 60%,transparent 100%);transition:opacity 0.3s; }
+.svc-preview-text { position:absolute;bottom:0;left:0;right:0;padding:24px;color:#fff; }
+.svc-preview-text h3 { font-family:var(--font-display);font-size:18px;font-weight:700;margin-bottom:8px;line-height:1.2; }
+.svc-preview-text p { font-size:13px;color:rgba(255,255,255,0.75);line-height:1.6;margin-bottom:12px; }
+.svc-preview-text span { font-size:12px;font-weight:600;color:var(--gold);letter-spacing:0.05em; }
+@media (max-width:768px) {
+  .svc-preview-grid { grid-template-columns:1fr; }
+  .svc-preview-img { height:260px; }
+}

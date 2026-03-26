@@ -4,13 +4,6 @@
   if (!mount) return;
 
   var staticProducts = [
-    { id:1, category:'Instrumentation', name:'Pressure Transmitters',          brand:'Endress+Hauser / Rosemount', description:'High-accuracy pressure measurement for process and utility applications.', image_path:'' },
-    { id:2, category:'Instrumentation', name:'Flow Meters',                    brand:'Yokogawa / ABB',             description:'Electromagnetic, vortex, and coriolis flow measurement solutions.', image_path:'' },
-    { id:3, category:'Instrumentation', name:'Online Water Analysers',         brand:'Hach / YSI',                 description:'Real-time water quality monitoring — pH, turbidity, dissolved oxygen, conductivity.', image_path:'' },
-    { id:4, category:'Electrical',      name:'Motor Control Centres (MCC)',    brand:'ABB / Schneider Electric',   description:'Custom-built MCC panels for motor control and protection.', image_path:'' },
-    { id:5, category:'Electrical',      name:'Variable Speed Drives',          brand:'ABB / Danfoss',              description:'Energy-efficient drives for pump, fan, and motor applications.', image_path:'' },
-    { id:6, category:'Automation',      name:'Programmable Logic Controllers', brand:'Siemens / Allen-Bradley',    description:'S7-1200, S7-1500, and CompactLogix PLCs for all control applications.', image_path:'' },
-    { id:7, category:'Automation',      name:'SCADA & HMI Systems',            brand:'Wonderware / Ignition',      description:'Real-time monitoring and control systems for industrial processes.', image_path:'' },
   ];
 
   function groupByCategory(products) {

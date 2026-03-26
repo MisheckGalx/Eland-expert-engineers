@@ -1,56 +1,57 @@
-/* ===== LOADING SCREEN ===== */
-
-(function initLoader() {
-
-  /* Inject loader HTML before everything else */
-  const loader = document.createElement('div');
-  loader.id = 'loader';
+(function() {
+  var loader = document.createElement('div');
+  loader.id = 'site-loader';
   loader.innerHTML = `
-    <div class="loader-logo">
-      <div class="loader-hex">EE</div>
-      <div class="loader-brand">
-        <span class="name">Eland Expert Engineers</span>
-        <span class="sub">E&amp;I Solutions &nbsp;·&nbsp; eeesa.co.za</span>
-      </div>
-    </div>
-    <div class="loader-bar-wrap">
-      <div class="loader-bar" id="loaderBar"></div>
-    </div>
-    <span class="loader-tagline">Engineering Excellence</span>
-  `;
+    <div class="loader-inner">
+      <img src="images/logo.png" alt="Eland Expert Engineers" class="loader-logo"/>
+      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <p class="loader-text">ENGINEERING EXCELLENCE</p>
+    </div>`;
   document.body.prepend(loader);
 
-  /* Animate progress bar 0 → 100% in ~1.4s */
-  const bar = document.getElementById('loaderBar');
-  let progress = 0;
-  const steps = [
-    { target: 30,  delay: 80  },
-    { target: 60,  delay: 200 },
-    { target: 85,  delay: 350 },
-    { target: 100, delay: 500 },
-  ];
+  var style = document.createElement('style');
+  style.textContent = `
+    #site-loader {
+      position:fixed;inset:0;z-index:99999;
+      background:#0b1f3a;
+      display:flex;align-items:center;justify-content:center;
+      transition:opacity 0.6s ease, visibility 0.6s ease;
+    }
+    #site-loader.hide { opacity:0;visibility:hidden; }
+    .loader-inner { text-align:center;display:flex;flex-direction:column;align-items:center;gap:24px; }
+    .loader-logo {
+      width:180px;height:auto;
+      animation:logoPulse 1.2s ease-in-out infinite alternate;
+    }
+    @keyframes logoPulse {
+      from { opacity:0.7;transform:scale(0.97); }
+      to   { opacity:1;transform:scale(1.03); }
+    }
+    .loader-bar {
+      width:160px;height:2px;
+      background:rgba(255,255,255,0.1);
+      border-radius:2px;overflow:hidden;
+    }
+    .loader-fill {
+      height:100%;width:0%;
+      background:linear-gradient(90deg,#f4640a,#fbbf24);
+      border-radius:2px;
+      animation:loadFill 1.8s ease forwards;
+    }
+    @keyframes loadFill { to { width:100%; } }
+    .loader-text {
+      font-size:10px;letter-spacing:0.3em;
+      color:rgba(255,255,255,0.35);
+      font-family:'Segoe UI',sans-serif;
+      font-weight:600;
+    }
+  `;
+  document.head.appendChild(style);
 
-  steps.forEach(({ target, delay }) => {
-    setTimeout(() => {
-      bar.style.width = target + '%';
-    }, delay);
+  window.addEventListener('load', function() {
+    setTimeout(function() {
+      loader.classList.add('hide');
+      setTimeout(function(){ loader.remove(); }, 700);
+    }, 2000);
   });
-
-  /* Hide loader once page is ready */
-  function hideLoader() {
-    setTimeout(() => {
-      loader.classList.add('hidden');
-      /* Remove from DOM after transition ends */
-      loader.addEventListener('transitionend', () => {
-        loader.remove();
-      }, { once: true });
-    }, 1100); /* Minimum display time */
-  }
-
-  if (document.readyState === 'complete') {
-    hideLoader();
-  } else {
-    window.addEventListener('load', hideLoader);
-  }
-
 })();

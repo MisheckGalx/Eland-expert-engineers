@@ -1,13 +1,17 @@
-const express = require('express');
-const sqlite3 = require('sqlite3').verbose();
-const path = require('path');
-const router = express.Router();
+const express  = require('express');
+const Database = require('better-sqlite3');
+const path     = require('path');
+const router   = express.Router();
+const db = () => new Database(path.resolve(process.env.DB_PATH || './server/db/eland.db'));
+
 router.get('/', (req, res) => {
-  const db = new sqlite3.Database(path.resolve(process.env.DB_PATH || './server/db/eland.db'));
-  db.all('SELECT id,name,company,role,content,rating FROM testimonials WHERE approved=1 ORDER BY id', (err, rows) => {
-    db.close();
-    if (err) return res.status(500).json({ success: false, message: err.message });
+  try {
+    const d = db();
+    const rows = d.prepare('SELECT * FROM testimonials WHERE approved=1 ORDER BY created_at DESC').all();
+    d.close();
     res.json({ success: true, data: rows });
-  });
+  } catch(e) {
+    res.status(500).json({ success: false, message: e.message });
+  }
 });
 module.exports = router;

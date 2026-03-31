@@ -65,7 +65,7 @@
         <h1>
           Engineering<br>
           <span class="accent">Excellence</span>
-          <span class="indent">in Eamp;EE Solutions</span>
+          <span class="indent">in EEE Solutions</span>
         </h1>
 
         <p class="hero-sub">

@@ -60,7 +60,7 @@
 
       <!-- CONTENT -->
       <div class="hero-content">
-        <div class="hero-badge">South Africa's Elite E&amp;E Engineering Partner</div>
+        <div class="hero-badge">South Africa's Elite EEE Engineering Partner</div>
 
         <h1>
           Engineering<br>

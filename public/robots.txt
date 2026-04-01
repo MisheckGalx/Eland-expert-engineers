@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://www.elandexpertengineers.com/sitemap.xml
+Sitemap: https://elandexpertengineers.com/sitemap.xml

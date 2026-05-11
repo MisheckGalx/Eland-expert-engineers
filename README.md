@@ -73,7 +73,7 @@ Change any value here and it updates across the entire site instantly.
 
 ## 📞 Contact Details Location
 
-To update phone, email, address, social links — search for `admin1@eeesa.co.za` and `+27 64 748 2526` across the JS files. They appear in:
+To update phone, email, address, social links — search for `info@elandexpertengineers.com` and `+27 64 748 2526` across the JS files. They appear in:
 - `js/contact.js`
 - `js/experts.js`
 - `index.html` (footer)
@@ -93,11 +93,11 @@ To publish this website:
    - Drag the `eland-website` folder onto netlify.com/drop
    - Instant live URL ✓
 
-3. **Your own domain** (www.eeesa.co.za)
+3. **Your own domain** (www.elandexpertengineers.com)
    - Point DNS A record to your hosting IP
    - Upload files to public_html folder
 
 
 ---
 
-Built for Eland Expert Engineers (Pty) Ltd · www.eeesa.co.za
+Built for Eland Expert Engineers (Pty) Ltd · www.elandexpertengineers.com
